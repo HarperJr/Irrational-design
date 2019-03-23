@@ -3,24 +3,23 @@
     <div id="sidebar" class="card">
 
       <div id="user">
-        <div id="userHeader">
+        <div class="user-top">
           <img src="" alt="" class="avatar">
-          <h1><a v-bind:href="user.link"></a>{{user.name}}</h1>
+          <h2><a class="user-link" v-bind:href="user.link">{{user.name}}</a></h2>
         </div>
-        <div id="userFooter">
+        <div class="user-bot">
           <p class="email"><b>{{user.email}}</b></p>
           <button id="followBtn" class="btn blue" v-on:click="onFollowBtnClicked">+FOLLOW</button>
         </div>
       </div>
 
       <div id="post">
-        <div id="btnGroup">
+        <div class="fav-like-btn-group">
           <button id="favoriteAddBtn" class="btn blue" v-on:click="onFavoriteAddBtnClicked">ADD TO FAVORITES</button>
           <button id="likeBtn" class="btn green" v-on:click="onLikeBtnClicked">LIKE</button>
         </div>
 
-
-        <h2>{{post.title}}</h2>
+        <h1>{{post.title}}</h1>
         <p>{{post.description}}</p>
 
         <div>
@@ -30,12 +29,23 @@
             </li>
           </ul>
         </div>
+
+        <div id="messagesHolder">
+          <div v-for="message in post.messages">
+            <!--todo make messsage component-->
+            <p>{{message.user}}</p>
+            <p>{{message.content}}</p>
+          </div>
+        </div>
       </div>
 
     </div>
 
     <div id="content">
-
+      <!--todo make multimedia component-->
+      <div class="multimedia-holder" v-for="art in post.multimedia">
+        <img v-bind:src="art.link" v-bind:alt="art.name">
+      </div>
     </div>
 
   </div>
@@ -48,15 +58,25 @@
       return {
         user: {
           name: 'Michael Greenwood',
-          email: 'michaelGreen@post.com'
+          email: 'michaelGreen@post.com',
+          link: '#'
         },
         post: {
           title: 'Facepack Monster',
           description: 'Post decription',
+          messages: [
+            { user: 'Nik Harper', content: 'Nice work dude!'},
+            { user: 'Ivo', content: 'Yah so nice.'}
+          ],
+          multimedia: [
+            // ALl multimedia here is located at assets folder
+            { name: 'Dishonored Solder', link: '../assets/dishonored-solder.jpg'},
+            { name: 'Dishonored Solder Light', link: '../assets/dishonored-solder-light.jpg'}
+          ],
           tags: [
-            { name: "art" },
-            { name: "alien" },
-            { name: "coolthing" }
+            { name: 'Digital' },
+            { name: 'Art' },
+            { name: 'Aliens' }
           ]
         }
       }
@@ -80,12 +100,38 @@
     display: flex;
   }
 
+  .container {
+    flex: 1;
+  }
+
+  .user-top {
+    flex-direction: row;
+  }
+
+  .user-bot {
+    flex-direction: column;
+  }
+
+  .user-link {
+    text-decoration: none;
+    color: #545871;
+  }
+
   .email {
+    align-self: center;
     font-size: 20px;
+  }
+
+  .fav-like-btn-group {
+    justify-content: space-between;
   }
 
   .tag-element {
     margin: 5px;
+  }
+
+  .multimedia-holder {
+
   }
 
   #sidebar {
@@ -94,20 +140,13 @@
   }
 
   #content {
-
+    flex: 1;
+    flex-direction: column;
   }
 
   #user {
     flex-direction: column;
-    margin: 45px;
-  }
-
-  #userHeader {
-    flex-direction: row;
-  }
-
-  #userFooter {
-    flex-direction: column;
+    margin: 45px 45px 0px;
   }
 
   #post {
@@ -115,14 +154,22 @@
     flex-direction: column;
   }
 
-  #btnGroup {
-    align-items: center;
-    margin: auto;
+  #followBtn {
+    align-self: center;
+  }
+
+  #likeBtn {
+    flex-basis: 162px;
   }
 
   #tagHolder {
+    align-content: flex-start;
     display: flex;
     flex-flow: wrap;
     list-style: none;
+  }
+
+  #messagesHolder {
+    flex-direction: column;
   }
 </style>
