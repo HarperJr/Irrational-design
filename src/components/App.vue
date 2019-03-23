@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <img src="../assets/logo.png">
     <router-view/>
   </div>
 </template>
@@ -21,26 +20,43 @@ export default {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 
-h1, h2 {
-  font-weight: normal;
+.btn{
+  position: relative;
+  display: block;
+  padding: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  border-width: 0;
+  border-radius: 8px;
+  background-color: #5dd0ee;
+  color: #ffffff;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
+.btn.blue {
+  background-color: #5dd0ee;
 }
 
-li {
-  display: inline-block;
-  margin: 0 10px;
+.btn.green {
+  background-color: #5deec6;
 }
 
-a {
-  color: #42b983;
+.btn:hover {
+  background-color: #23b6dc;
 }
+
+.btn.blue:hover {
+  background-color: #23b6dc;
+}
+
+.btn.green:hover {
+  background-color: #4cd4ae;
+}
+
+.card {
+
+}
+
 </style>
