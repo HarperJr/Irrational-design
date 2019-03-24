@@ -31,11 +31,7 @@
         </div>
 
         <div id="messagesHolder">
-          <div v-for="message in post.messages">
-            <!--todo make messsage component-->
-            <p>{{message.user}}</p>
-            <p>{{message.content}}</p>
-          </div>
+          <message v-for="message in post.messages" v-bind:message="message"></message>
         </div>
       </div>
 
@@ -52,6 +48,8 @@
 </template>
 
 <script>
+  import Message from './Message.vue'
+
   export default {
     name: 'detail',
     data() {
@@ -65,8 +63,8 @@
           title: 'Facepack Monster',
           description: 'Post decription',
           messages: [
-            { user: 'Nik Harper', content: 'Nice work dude!'},
-            { user: 'Ivo', content: 'Yah so nice.'}
+            { title: 'Nik Harper', content: 'Nice work dude!'},
+            { title: 'Ivo', content: 'Yah so nice.'}
           ],
           multimedia: [
             // ALl multimedia here is located at assets folder
@@ -91,10 +89,13 @@
       onLikeBtnClicked: function() {
           alert('onLikeBtnClicked')
       }
+    },
+    components: {
+      message: Message
     }
   }
 </script>
 
 <style media="screen" scoped>
-  @import '../style/post.css';
+  @import './style/post.css';
 </style>
