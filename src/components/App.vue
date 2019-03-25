@@ -1,16 +1,17 @@
 <template>
-  <div id="app">
+  <div id="app" class="wrapper">
+    <navbar/>
     <router-view/>
   </div>
 </template>
 
 <script>
+import Navbar from './Navbar.vue'
+
 export default {
   name: 'app',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App'
-    }
+  components: {
+    navbar: Navbar
   }
 }
 </script>
