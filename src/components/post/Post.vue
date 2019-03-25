@@ -31,7 +31,7 @@
         </div>
 
         <div id="messagesHolder">
-          <message v-for="message in post.messages" v-bind:message="message"></message>
+          <message v-for="message in post.messages" v-bind:message="message" v-bind:key="message.id"></message>
         </div>
       </div>
 
