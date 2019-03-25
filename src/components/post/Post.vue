@@ -31,7 +31,7 @@
         </div>
 
         <div id="messagesHolder">
-          <message v-for="message in post.messages" v-bind:message="message" v-bind:key="message.id"></message>
+          <comment v-for="comment in post.comments" :comment="comment" :key="comment.id"></comment>
         </div>
       </div>
 
@@ -48,7 +48,7 @@
 </template>
 
 <script>
-  import Message from './Message.vue'
+  import Comment from './Comment.vue'
 
   export default {
     name: 'detail',
@@ -62,7 +62,7 @@
         post: {
           title: 'Facepack Monster',
           description: 'Post decription',
-          messages: [
+          comments: [
             { title: 'Nik Harper', content: 'Nice work dude!'},
             { title: 'Ivo', content: 'Yah so nice.'}
           ],
@@ -91,7 +91,7 @@
       }
     },
     components: {
-      message: Message
+      comment: Comment
     }
   }
 </script>
