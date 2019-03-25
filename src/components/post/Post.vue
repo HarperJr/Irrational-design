@@ -20,18 +20,19 @@
         </div>
 
         <h1>{{post.title}}</h1>
+        <h2>{{post.subtitle}}</h2>
         <p>{{post.description}}</p>
 
         <div>
           <ul id="tagHolder">
-            <li class="tag-element" v-for="tag in post.tags">
-              {{tag.name}}
+            <li class="tag-element" v-for="it in post.tags">
+              {{it.tag}}
             </li>
           </ul>
         </div>
 
         <div id="messagesHolder">
-          <message v-for="message in post.messages" v-bind:message="message"></message>
+          <comment v-for="comment in comments" :comment="comment" :key="comment.id"></comment>
         </div>
       </div>
 
@@ -40,7 +41,7 @@
     <div id="content">
       <!--todo make multimedia component-->
       <div class="multimedia-holder" v-for="art in post.multimedia">
-        <img v-bind:src="art.link" v-bind:alt="art.name">
+        <img class="art" v-bind:src="art.link" v-bind:alt="art.name">
       </div>
     </div>
 
@@ -48,35 +49,36 @@
 </template>
 
 <script>
-  import Message from './Message.vue'
+  const axios = require('axios')
+  import Comment from './Comment.vue'
 
   export default {
     name: 'detail',
     data() {
       return {
         user: {
-          name: 'Michael Greenwood',
-          email: 'michaelGreen@post.com',
-          link: '#'
+          type: Object
         },
         post: {
-          title: 'Facepack Monster',
-          description: 'Post decription',
-          messages: [
-            { title: 'Nik Harper', content: 'Nice work dude!'},
-            { title: 'Ivo', content: 'Yah so nice.'}
-          ],
-          multimedia: [
-            // ALl multimedia here is located at assets folder
-            { name: 'Dishonored Solder', link: '../assets/dishonored-solder.jpg'},
-            { name: 'Dishonored Solder Light', link: '../assets/dishonored-solder-light.jpg'}
-          ],
-          tags: [
-            { name: 'Digital' },
-            { name: 'Art' },
-            { name: 'Aliens' }
-          ]
+          type: Object
+        },
+        comments: {
+          type: Object
         }
+      }
+    },
+    watch: {
+      post: function() {
+        axios.get('http://localhost:8080/api/user.json')
+        .then(response => {
+          this.user = response.data
+        })
+        .catch(e => console.log(e))
+        axios.get('http://localhost:8080/api/comments.json')
+        .then(response => {
+          this.comments = response.data
+        })
+        .catch(e => console.log(e))
       }
     },
     methods: {
@@ -90,8 +92,15 @@
           alert('onLikeBtnClicked')
       }
     },
+    mounted() {
+      axios.get('http://localhost:8080/api/post.json')
+      .then(response => {
+        this.post = response.data
+      })
+      .catch(e => console.log(e))
+    },
     components: {
-      message: Message
+      comment: Comment
     }
   }
 </script>

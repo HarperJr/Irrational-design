@@ -33,11 +33,20 @@ div {
 }
 
 .multimedia-holder {
+  display: inline;
+  position: relative;
+}
 
+.art {
+  position: relative;
+  max-width: 100%;
+  height: auto;
+  margin-top: 12px;
+  vertical-align: middle;
 }
 
 #sidebar {
-  flex-basis: 512px;
+  flex-basis: 412px;
   flex-direction: column;
 }
 

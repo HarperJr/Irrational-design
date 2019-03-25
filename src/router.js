@@ -8,7 +8,7 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path: '/feed',
+      path: '/',
       name: 'feed',
       component: Feed
     }, {
