@@ -19,6 +19,6 @@
 
 <script type="text/javascript">
   export default {
-    name: 'feed'
+    name: 'Feed'
   }
 </script>

@@ -1,25 +1,25 @@
-div {
-  display: flex;
-}
-
 .container {
   flex: 1;
 }
 
-.user-top {
-  flex-direction: row;
-}
-
-.user-bot {
+.artist {
   flex-direction: column;
 }
 
-.user-link {
+.artist-touch {
+  flex-direction: row;
+}
+
+.artist {
+  flex-direction: column;
+}
+
+.artist-link {
   text-decoration: none;
   color: #545871;
 }
 
-.email {
+.artist-email {
   align-self: center;
   font-size: 20px;
 }
@@ -35,14 +35,6 @@ div {
 .multimedia-holder {
   display: inline;
   position: relative;
-}
-
-.art {
-  position: relative;
-  max-width: 100%;
-  height: auto;
-  margin-top: 12px;
-  vertical-align: middle;
 }
 
 #sidebar {

@@ -1,23 +1,23 @@
 <template>
-  <div>
-    <div class="logo">
-      <h1><a href="#/">Irrational Design</a></h1>
+  <nav class="navbar">
+    <div class="logo-holder">
+      <a class="logo" href="#/">Irrational Design</a>
     </div>
-    <nav id="navbar">
-      <ul>
-        <li><a href="#/about">About</a></li>
-        <li><a href="#/pages">Pages</a></li>
-        <li><a href="#/more">More</a></li>
-        <li><a href="#/blog">Blog</a></li>
-        <li><a href="#/post">Post-dev</a></li>
-      </ul>
-    </nav>
-  </div>
+    <div class="nav-panel">
+      <ul class="nav-menu">
+      <li class="nav"><a href="#/about">About</a></li>
+      <li class="nav"><a href="#/pages">Pages</a></li>
+      <li class="nav"><a href="#/more">More</a></li>
+      <li class="nav"><a href="#/blog">Blog</a></li>
+      <li class="nav"><a href="#/post">Post-dev</a></li>
+    </ul>
+    </div>
+  </nav>
 </template>
 
 <script>
   export default {
-    name: 'navbar'
+    name: 'Navbar'
   }
 </script>
 
