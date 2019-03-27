@@ -2,6 +2,11 @@
   flex: 1;
 }
 
+.sidebar {
+  flex-basis: 412px;
+  flex-direction: column;
+}
+
 .artist {
   flex-direction: column;
 }
@@ -24,54 +29,43 @@
   font-size: 20px;
 }
 
-.fav-like-btn-group {
+.grid-horizontal {
   justify-content: space-between;
 }
 
-.tag-element {
+.tag-item {
   margin: 5px;
 }
 
-.multimedia-holder {
-  display: inline;
-  position: relative;
-}
-
-#sidebar {
-  flex-basis: 412px;
-  flex-direction: column;
-}
-
-#content {
+.art-content {
   flex: 1;
   flex-direction: column;
 }
 
-#user {
-  flex-direction: column;
-  margin: 45px 45px 0px;
-}
-
-#post {
+.post-info {
   margin: 40px;
   flex-direction: column;
 }
 
-#followBtn {
+.btn-follow {
   align-self: center;
 }
 
-#likeBtn {
+.btn-favorites {
+  
+}
+
+.btn-like {
   flex-basis: 162px;
 }
 
-#tagHolder {
+.tag-holder {
   align-content: flex-start;
   display: flex;
   flex-flow: wrap;
   list-style: none;
 }
 
-#messagesHolder {
+.comment-holder {
   flex-direction: column;
 }

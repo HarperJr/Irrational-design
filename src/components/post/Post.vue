@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div id="sidebar" class="card">
+    <div class="sidebar card">
 
       <div class="artist">
         <div class="artist-touch">
@@ -8,35 +8,35 @@
           <h2><a class="artist-link" :href="artist.link">{{artist.name}}</a></h2>
         </div>
         <p class="artist-email"><b>{{artist.email}}</b></p>
-        <button id="followBtn" class="btn blue" @click="onFollowBtnClicked">+FOLLOW</button>
+        <button class="btn btn-follow" @click="onFollowBtnClicked">+FOLLOW</button>
       </div>
 
-      <div id="post">
-        <div class="fav-like-btn-group">
-          <button id="favoriteAddBtn" class="btn blue" @click="onFavoriteAddBtnClicked">ADD TO FAVORITES</button>
-          <button id="likeBtn" class="btn green" @:click="onLikeBtnClicked">LIKE</button>
+      <div class="post-info">
+        <div class="grid-horizontal">
+          <button class="btn btn-favorites" @click="onFavoriteAddBtnClicked">ADD TO FAVORITES</button>
+          <button class="btn btn-like" @:click="onLikeBtnClicked">LIKE</button>
         </div>
 
         <h1>{{post.title}}</h1>
-        <h2>{{post.subtitle}}</h2>
+        <h3>{{post.subtitle}}</h3>
         <p>{{post.description}}</p>
 
         <div>
-          <ul id="tagHolder">
-            <li class="tag-element" v-for="it in post.tags">
+          <ul class="tag-holder">
+            <li class="tag-item" v-for="it in post.tags">
               {{it.tag}}
             </li>
           </ul>
         </div>
 
-        <div id="messagesHolder">
+        <div class="comment-holder">
           <Comment v-for="comment in comments" :comment="comment" :key="comment.id"></Comment>
         </div>
       </div>
 
     </div>
 
-    <div id="content">
+    <div class="art-content">
         <Art v-for="art in post.multimedia" :art="art" :key="art.id"></Art>
     </div>
 
