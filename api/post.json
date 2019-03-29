@@ -1,13 +1,13 @@
 {
   "id": "19254cc4-50b5-4d66-936c-00042f7ff275",
-  "owner": {
+  "artist": {
     "id": "477572bf-7b56-459b-a349-5630964863c2",
     "name": "Sacha Austin",
     "followed": false,
     "permalink": "http://localhost:8080/#/sachaustin",
     "email": "sachaustin@post.com",
     "avatar": {
-      "link": "https://cdnb.artstation.com/p/users/avatars/000/128/105/large/d6637032c6b63eb8086bfe496c6998c4.jpg?1516223177",
+      "link": "https://cdnb.artstation.com/p/users/avatars/000/128/105/large/d6637032c6b63eb8086bfe496c6998c4.jpg?1516223177"
     }
   },
   "multimedia": [
