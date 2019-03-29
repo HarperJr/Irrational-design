@@ -1,24 +1,27 @@
 {
   "id": "19254cc4-50b5-4d66-936c-00042f7ff275",
-  "owner": "477572bf-7b56-459b-a349-5630964863c2",
+  "artist": {
+    "id": "477572bf-7b56-459b-a349-5630964863c2",
+    "name": "Sacha Austin",
+    "followed": false,
+    "permalink": "http://localhost:8080/#/sachaustin",
+    "email": "sachaustin@post.com",
+    "avatar": {
+      "link": "https://cdnb.artstation.com/p/users/avatars/000/128/105/large/d6637032c6b63eb8086bfe496c6998c4.jpg?1516223177"
+    }
+  },
   "multimedia": [
     {
-      "name": "sanhanat-suwanwised-popnew",
-      "link": "https://cdnb.artstation.com/p/assets/images/images/015/097/841/large/sanhanat-suwanwised-popnew-13.jpg?1547048871",
-      "width": 1024,
-      "height": 2048
+      "name": "sanhanat-suwanwised-popnew.jpg",
+      "link": "https://cdnb.artstation.com/p/assets/images/images/015/097/841/large/sanhanat-suwanwised-popnew-13.jpg?1547048871"
     },
     {
-      "name": "sanhanat-suwanwised-dfeee",
-      "link": "https://cdna.artstation.com/p/assets/images/images/015/097/436/large/sanhanat-suwanwised-dfeee.jpg?1547047171",
-      "width": 1024,
-      "height": 2048
+      "name": "sanhanat-suwanwised-dfeee.jpg",
+      "link": "https://cdna.artstation.com/p/assets/images/images/015/097/436/large/sanhanat-suwanwised-dfeee.jpg?1547047171"
     },
     {
-      "name": "sanhanat-suwanwised-qux",
-      "link": "https://cdna.artstation.com/p/assets/images/images/015/075/548/large/sanhanat-suwanwised-qux.jpg?1546964165",
-      "width": 1024,
-      "height": 2048
+      "name": "sanhanat-suwanwised-qux.jpg",
+      "link": "https://cdna.artstation.com/p/assets/images/images/015/075/548/large/sanhanat-suwanwised-qux.jpg?1546964165"
     }
   ],
   "title": "Sanhanat Suwanwised",
