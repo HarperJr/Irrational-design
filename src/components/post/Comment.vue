@@ -1,6 +1,7 @@
 <template>
   <div class="comment-holder">
     <div>
+      <img :src="comment.author.avatar.link" class="avatar">
       <p class="comment-title">{{comment.author.name}}</p>
     </div>
     <div>
@@ -16,11 +17,6 @@
       comment: {
         author: {
           name: String,
-          avatar: {
-            link: String,
-            width: Number,
-            height: Number
-          },
           required: true
         },
         content: String,

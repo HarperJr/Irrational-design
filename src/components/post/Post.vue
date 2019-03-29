@@ -4,17 +4,17 @@
 
       <div class="artist">
         <div class="artist-touch">
-          <img :src="artist.avatar.link" class="avatar">
-          <h2><a class="artist-link" :href="artist.link">{{artist.name}}</a></h2>
+          <img :src="post.artist.avatar.link" class="artist-avatar">
+          <h2><a class="artist-link" :href="post.artist.link">{{post.artist.name}}</a></h2>
         </div>
-        <p class="artist-email"><b>{{artist.email}}</b></p>
+        <p class="artist-email"><b>{{post.artist.email}}</b></p>
         <button class="btn btn-follow" @click="onFollowBtnClicked">+FOLLOW</button>
       </div>
 
       <div class="post-info">
         <div class="grid-horizontal">
           <button class="btn btn-favorites" @click="onFavoriteAddBtnClicked">ADD TO FAVORITES</button>
-          <button class="btn btn-like" @:click="onLikeBtnClicked">LIKE</button>
+          <button class="btn btn-like" @click="onLikeBtnClicked">LIKE</button>
         </div>
 
         <h1>{{post.title}}</h1>
@@ -52,12 +52,12 @@
     name: 'Post',
     data() {
       return {
-        artist: {
-          type: Object,
-          required: true
-        },
         post: {
           type: Object,
+          artist: {
+            type: Object,
+            required: true
+          },
           required: true
         },
         comments: {
@@ -66,32 +66,23 @@
         }
       }
     },
-    watch: {
-      post: function() {
-        axios.get('http://localhost:8080/api/user.json')
-        .then(response => {
-          this.artist = response.data
-        })
-        .catch(e => console.log(e))
-        axios.get('http://localhost:8080/api/comments.json')
-        .then(response => {
-          this.comments = response.data
-        })
-        .catch(e => console.log(e))
-      }
-    },
     methods: {
       onFollowBtnClicked: function() {
-          alert('onFollowBtnClicked')
+        console.log("onFollowBtnClicked")
       },
       onFavoriteAddBtnClicked: function() {
-          alert('onFavoriteAddBtnClicked')
+        console.log("onFavoriteAddBtnClicked")
       },
       onLikeBtnClicked: function() {
-          alert('onLikeBtnClicked')
+        console.log("onLikeBtnClicked")
       }
     },
-    mounted() {
+    created() {
+      axios.get('http://localhost:8080/api/comments.json')
+      .then(response => {
+        this.comments = response.data
+      })
+      .catch(e => console.log(e))
       axios.get('http://localhost:8080/api/post.json')
       .then(response => {
         this.post = response.data
