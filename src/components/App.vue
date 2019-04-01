@@ -1,19 +1,28 @@
 <template>
-  <div id="app" class="wrapper">
-    <Navbar/>
+  <div id="app">
+    <navbar></navbar>
+    <!--subnavbar></subnavbar-->
     <router-view/>
   </div>
 </template>
 
 <script>
-import Navbar from './Navbar.vue'
+  import NavBar from './NavBar.vue'
+  import SubNavBar from './SubNavBar.vue'
 
-export default {
-  name: 'App',
-  components: {
-    Navbar
+  export default {
+
+    name: 'app',
+    data() {
+      return {
+        msg: 'Welcome to Your Vue.js App'
+      }
+    },
+    components: {
+      navbar: NavBar,
+      subnavbar: SubNavBar
+    }
   }
-}
 </script>
 
 <style lang="scss" scoped>

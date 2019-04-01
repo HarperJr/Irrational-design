@@ -1,32 +1,21 @@
-.navbar {
-  display: flex;
-  flex-direction: row;
-  min-height: 58px;
-  flex: 1;
+.navIcon {
+  padding-left: 20px;
+  padding-right: 40px;
 }
 
-.nav-menu {
-  padding: 0px;
-  margin: auto;
+.v-input__slot {
+  margin: 0px;
 }
 
-.nav {
-  display: inline-flex;
-  width: 80px;
+.navField {
+  align-items: center;
+  padding-left: 20px;
 }
 
-.nav a {
-  text-decoration: none;
+.v-text-field.v-text-field--solo .v-input__control{
+  min-height: 30px;
 }
 
-.logo-holder {
-  width: auto;
-  margin-left: 16px;
-  margin-right: 16px;
-}
-
-.logo {
-  text-decoration: none;
-  align-self: center;
-  font-size: 20px;
+.sub-nav-orientation{
+  width: 100%;
 }
