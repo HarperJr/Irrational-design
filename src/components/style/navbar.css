@@ -5,7 +5,7 @@
 
 .sub-nav-bar{
   padding-left: 50px;
-  background: #F9F9F9;
+
 }
 
 .sub-nav-bar .v-btn:hover{
@@ -15,4 +15,12 @@
 
 .sub-nav-bar .v-btn{
   height: 65px;
+}
+
+.theme--light.v-toolbar {
+  background-color: #FFFFFF;
+}
+
+.irrd-sub-nav-bar .theme--light.v-toolbar{
+  background: #F9F9F9;
 }
