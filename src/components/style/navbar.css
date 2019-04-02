@@ -1,21 +1,18 @@
-.navIcon {
-  padding-left: 20px;
+.nav-logo{
+  padding-left: 10px;
   padding-right: 40px;
 }
 
-.v-input__slot {
-  margin: 0px;
+.sub-nav-bar{
+  padding-left: 50px;
+  background: #F9F9F9;
 }
 
-.navField {
-  align-items: center;
-  padding-left: 20px;
+.sub-nav-bar .v-btn:hover{
+  background: #76A2A5;
+  color: #ffffff;
 }
 
-.v-text-field.v-text-field--solo .v-input__control{
-  min-height: 30px;
-}
-
-.sub-nav-orientation{
-  width: 100%;
+.sub-nav-bar .v-btn{
+  height: 65px;
 }
