@@ -1,46 +1,48 @@
 <template>
-  <div class="container">
-    <div class="sidebar card">
+  <v-container fluid>
+    <v-layout align-start>
 
-      <div class="artist">
-        <div class="artist-touch">
-          <img :src="post.artist.avatar.link" class="artist-avatar">
-          <h2><a class="artist-link" :href="post.artist.link">{{post.artist.name}}</a></h2>
-        </div>
-        <p class="artist-email"><b>{{post.artist.email}}</b></p>
-        <button class="btn btn-follow" @click="onFollowBtnClicked">+FOLLOW</button>
-      </div>
+      <v-flex xs12 md5>
+        <v-card elevation="6">
+          <v-container>
+            <v-layout column>
+              <v-flex>
+                <v-flex>
+                  <v-avatar size="82px">
+                    <img :src="post.artist.avatar.link" :alt="post.artist.avatar.name">
+                  </v-avatar>
+                </v-flex>
+                <v-flex align-center offset-xs1>
+                  <strong><a class="permalink" :href="post.artist.permalink">{{post.artist.name}}</a></strong>
+                </v-flex>
+              </v-flex>
+              <v-flex>
+                <h2>{{post.artist.email}}</h2>
+              </v-flex>
+              <v-btn depressed color="#eff">+Follow</v-btn>
+              <v-flex>
+                <v-btn depressed color="#eff">Bookmark</v-btn>
+                <v-btn depressed color="#eff">Like</v-btn>
+              </v-flex>
+              <h1>{{post.title}}</h1>
+              <h2>{{post.subtitle}}</h2>
+              <p>{{post.description}}</p>
+              <v-layout column>
+                <Comment v-for="comment in comments" :key="comment.id" :comment="comment"></Comment>
+              </v-layout>
+            </v-layout>
+          </v-container>
+        </v-card>
+      </v-flex>
 
-      <div class="post-info">
-        <div class="grid-horizontal">
-          <button class="btn btn-favorites" @click="onFavoriteAddBtnClicked">ADD TO FAVORITES</button>
-          <button class="btn btn-like" @click="onLikeBtnClicked">LIKE</button>
-        </div>
+      <v-flex xs12>
+        <v-layout column>
+          <Art v-for="art in post.arts" :key="art.id" :art="art"></Art>
+        </v-layout>
+      </v-flex>
 
-        <h1>{{post.title}}</h1>
-        <h3>{{post.subtitle}}</h3>
-        <p>{{post.description}}</p>
-
-        <div>
-          <ul class="tag-holder">
-            <li class="tag-item" v-for="it in post.tags">
-              {{it.tag}}
-            </li>
-          </ul>
-        </div>
-
-        <div class="comment-holder">
-          <Comment v-for="comment in comments" :comment="comment" :key="comment.id"></Comment>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="art-content">
-        <Art v-for="art in post.multimedia" :art="art" :key="art.id"></Art>
-    </div>
-
-  </div>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
