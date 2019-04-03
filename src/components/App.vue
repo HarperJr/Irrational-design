@@ -18,4 +18,5 @@ export default {
 
 <style lang="scss" scoped>
   @import './style/app.css';
+  @import '~vuetify/dist/vuetify.min.css';
 </style>

@@ -1,13 +1,15 @@
 <template>
-  <div class="comment-holder">
-    <div>
-      <img :src="comment.author.avatar.link" class="avatar">
+  <v-container class="comment-holder">
+    <v-flex>
+      <v-avatar size="56px">
+          <img :src="comment.author.avatar.link" class="avatar">
+      </v-avatar>
       <p class="comment-title">{{comment.author.name}}</p>
-    </div>
-    <div>
+    </v-flex>
+    <v-flex>
       <p>{{comment.content}}</p>
-    </div>
-  </div>
+    </v-flex>
+  </v-container>
 </template>
 
 <script>
