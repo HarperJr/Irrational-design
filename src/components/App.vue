@@ -8,9 +8,9 @@
 </template>
 
 <script>
-import Navbar from './Navbar.vue'
-import SubNavbar from './SubNavbar.vue'
-import BodyPosts from './BodyPosts.vue'
+import Navbar from './mainpage/NavBar.vue'
+import SubNavbar from './mainpage/SubNavBar.vue'
+import BodyPosts from './mainpage/BodyPosts.vue'
 
 export default {
   name: 'App',

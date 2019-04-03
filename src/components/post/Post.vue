@@ -28,7 +28,6 @@
             </li>
           </ul>
         </div>
-
         <div class="comment-holder">
           <Comment v-for="comment in comments" :comment="comment" :key="comment.id"></Comment>
         </div>

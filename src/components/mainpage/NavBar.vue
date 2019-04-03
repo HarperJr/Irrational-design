@@ -21,5 +21,5 @@
 </script>
 
 <style>
-  @import './style/navbar.css';
+  @import 'style/navbar.css';
 </style>
