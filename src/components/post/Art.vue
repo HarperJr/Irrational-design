@@ -1,5 +1,7 @@
 <template>
-  <img class="art" :src="art.link">
+  <v-flex>
+    <img class="art" :src="art.link">
+  </v-flex>
 </template>
 
 <script>
