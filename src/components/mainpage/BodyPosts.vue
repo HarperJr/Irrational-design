@@ -1,19 +1,15 @@
 <template>
 
+  <v-container>
+    <v-layout align-center justify-center row wrap>
+        <Post v-for="post in posts" :key="post.id" :post="posts[0]"></Post>
 
-  <v-container grid-list-md text-xs-center class="posts-position-in-row">
-    <v-layout align-space-around justify-center row fill-height>
-      <v-flex v-for="post in posts" :key="post.id" xs4>
-        <v-card>
-          <v-card-text class="px-0">{{post.id}}</v-card-text>
-        </v-card>
-      </v-flex>
     </v-layout>
   </v-container>
 </template>
 
 <script>
-  import Post from "../post/Post";
+  import Post from "../mainpage/Post";
 
   const axios = require('axios');
 
