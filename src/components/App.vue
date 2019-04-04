@@ -1,23 +1,17 @@
 <template>
   <div id="app" class="wrapper">
     <Navbar/>
-    <SubNavbar class="irrd-sub-nav-bar"/>
-    <BodyPosts/>
     <router-view/>
   </div>
 </template>
 
 <script>
-import Navbar from './mainpage/NavBar.vue'
-import SubNavbar from './mainpage/SubNavBar.vue'
-import BodyPosts from './mainpage/BodyPosts.vue'
+import Navbar from './NavBar.vue'
 
 export default {
   name: 'App',
   components: {
-    Navbar,
-    SubNavbar,
-    BodyPosts
+    Navbar
   }
 }
 </script>
