@@ -1,11 +1,11 @@
 <template>
-  <v-flex xs12 lg4>
+  <v-flex xs12 md4>
       <v-card class="pre-post-position">
         <v-img class="pre-post-img"
                 :src="post.preview.link"
         ></v-img>
 
-        <v-card-title primary-title>
+        <v-card-title primary-title >
           <div>
             <h5 class="headline mb-0">{{post.title}}</h5>
             <div> {{ post.subtitle }} </div>

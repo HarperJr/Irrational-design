@@ -1,6 +1,7 @@
 
 .pre-post-position.v-sheet{
-  margin-bottom: 50px;
+  margin: 50px;
+  width: 100%;
 }
 
 .v-btn{
@@ -13,9 +14,8 @@
 
 .pre-post-btn-follow.theme--light.v-btn:not(.v-btn--icon):not(.v-btn--flat){
   background-color: #5DEEC6;
-
 }
 
 .pre-post-img{
-  height: 250px;
+  height: 300px;
 }
