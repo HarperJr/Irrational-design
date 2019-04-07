@@ -19,3 +19,38 @@
 .pre-post-img{
   height: 300px;
 }
+
+.v-card__title{
+  flex-direction: column;
+  align-items: start;
+}
+
+.pre-post__autor-name {
+  flex-direction: column;
+  justify-content: space-around;
+  width: 100%;
+  padding-left: 20px;
+}
+
+.pre-post__autor-img img{
+  width: 72px;
+  height: 72px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  border: 2px solid #ccc;
+}
+
+.info1 {
+  padding: 20px;
+}
+
+.overlay {
+  height: 300px;
+  display: flex;
+  align-items: flex-end;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background: rgba(0,0,0,0.3);
+}

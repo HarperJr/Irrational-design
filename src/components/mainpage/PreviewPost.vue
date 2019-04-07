@@ -1,22 +1,38 @@
 <template>
+
   <v-flex xs12 md4>
-      <v-card class="pre-post-position">
-        <v-img class="pre-post-img"
-                :src="post.preview.link"
-        ></v-img>
 
-        <v-card-title primary-title >
-          <div>
-            <h5 class="headline mb-0">{{post.title}}</h5>
-            <div> {{ post.subtitle }} </div>
-          </div>
-        </v-card-title>
+    <v-card class="pre-post-position">
 
-        <v-card-actions>
-          <v-btn depressed class="pre-post-btn-like" >Like</v-btn>
-          <v-btn depressed class="pre-post-btn-follow">+Follow</v-btn>
-        </v-card-actions>
-      </v-card>
+      <v-img class="pre-post-img"
+             :src="post.preview.link"
+      ></v-img>
+      <div class="overlay">
+        <v-layout class="info1" justify-space-around>
+          <v-flex class="pre-post__autor-img">
+            <img class="avatar"
+                 ng-src="https://cdnb.artstation.com/p/users/avatars/000/277/319/medium/38f95e3050042f9d506d4f2b1dcd66eb.jpg"
+                 src="https://cdnb.artstation.com/p/users/avatars/000/277/319/medium/38f95e3050042f9d506d4f2b1dcd66eb.jpg"/>
+          </v-flex>
+          <v-flex class="pre-post__autor-name">
+            <div class="title" ng-bind-html="::project.title">Red Boat Stylized</div>
+            <div class="name">Janos Tokity<!---->
+              <div class="pro-badge smaller" ng-if="::project.user.pro_member">PRO</div><!----><!----></div>
+          </v-flex>
+
+
+        </v-layout>
+      </div>
+      <v-card-title primary-title>
+        <h3 class="headline mb-3">{{post.title}}</h3>
+        <h3> {{ post.subtitle }} </h3>
+      </v-card-title>
+      <v-card-actions>
+        <v-btn depressed class="pre-post-btn-like">Like</v-btn>
+        <v-btn depressed class="pre-post-btn-follow">+Follow</v-btn>
+      </v-card-actions>
+    </v-card>
+
   </v-flex>
 
 </template>
