@@ -15,9 +15,8 @@
                  src="https://cdnb.artstation.com/p/users/avatars/000/277/319/medium/38f95e3050042f9d506d4f2b1dcd66eb.jpg"/>
           </v-flex>
           <v-flex class="pre-post__autor-name">
-            <div class="title" ng-bind-html="::project.title">Red Boat Stylized</div>
-            <div class="name">Janos Tokity<!---->
-              <div class="pro-badge smaller" ng-if="::project.user.pro_member">PRO</div><!----><!----></div>
+            <div class="title pre-post-text">Red Boat Stylized</div>
+            <div class="pre-post-text">Janos Tokity</div>
           </v-flex>
 
 
