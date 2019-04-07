@@ -1,9 +1,8 @@
 <template>
   <v-flex xs12 lg4>
       <v-card class="pre-post-position">
-        <v-img
+        <v-img class="pre-post-img"
                 :src="post.preview.link"
-                aspect-ratio="2.75"
         ></v-img>
 
         <v-card-title primary-title>

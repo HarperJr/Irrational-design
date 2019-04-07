@@ -3,12 +3,19 @@
   margin-bottom: 50px;
 }
 
+.v-btn{
+  border-radius: 5px;
+}
+
 .pre-post-btn-like.theme--light.v-btn:not(.v-btn--icon):not(.v-btn--flat){
   background-color: #5DD0EE;
-  border-radius: 5px;
 }
 
 .pre-post-btn-follow.theme--light.v-btn:not(.v-btn--icon):not(.v-btn--flat){
   background-color: #5DEEC6;
-  border-radius: 5px;
+
+}
+
+.pre-post-img{
+  height: 250px;
 }
