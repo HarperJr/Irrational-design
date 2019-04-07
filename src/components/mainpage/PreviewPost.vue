@@ -1,7 +1,6 @@
 <template>
   <v-flex xs12 lg4>
-    <v-flex>
-      <v-card>
+      <v-card class="pre-post-position">
         <v-img
                 :src="post.preview.link"
                 aspect-ratio="2.75"
@@ -15,11 +14,10 @@
         </v-card-title>
 
         <v-card-actions>
-          <v-btn flat color="orange">Share</v-btn>
-          <v-btn flat color="orange">Explore</v-btn>
+          <v-btn depressed class="pre-post-btn-like" >Like</v-btn>
+          <v-btn depressed class="pre-post-btn-follow">+Follow</v-btn>
         </v-card-actions>
       </v-card>
-    </v-flex>
   </v-flex>
 
 </template>
@@ -37,5 +35,5 @@
 </script>
 
 <style scoped>
-
+  @import 'style/preview-post.css';
 </style>

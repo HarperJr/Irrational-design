@@ -2,14 +2,14 @@
 
   <v-container>
     <v-layout align-center justify-center row wrap>
-        <Post v-for="post in posts" :key="post.id" :post="posts[0]"></Post>
+        <PreviewPost v-for="post in posts" :key="post.id" :post="posts[0]"></PreviewPost>
 
     </v-layout>
   </v-container>
 </template>
 
 <script>
-  import Post from "../mainpage/Post";
+  import PreviewPost from "./PreviewPost";
 
   const axios = require('axios');
 
@@ -32,13 +32,12 @@
           .catch(e => console.log(e))
     },
     components: {
-      Post
+      PreviewPost
     }
 
   }
 </script>
 
 <style scoped>
-  @import 'style/bodyposts.css';
 
 </style>

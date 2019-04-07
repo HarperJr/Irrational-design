@@ -1,18 +1,18 @@
 <template>
   <v-layout column >
-  <SubNavbar class="irrd-sub-nav-bar"/>
+  <FilterNavBar class="irrd-sub-nav-bar"/>
   <BodyPosts/>
   </v-layout>
 </template>
 
 <script type="text/javascript">
-  import SubNavbar from './SubNavBar.vue'
+  import FilterNavBar from './FilterNavBar.vue'
   import BodyPosts from './BodyPosts.vue'
 
   export default {
     name: 'Feed',
     components: {
-      SubNavbar,
+      FilterNavBar,
       BodyPosts
     }
   }
