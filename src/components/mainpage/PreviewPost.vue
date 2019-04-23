@@ -27,6 +27,14 @@
         <h3> {{ post.subtitle }} </h3>
       </v-card-title>
       <v-card-actions>
+        <v-layout>
+          <div v-for="tag in post.tags" >
+            <v-btn class="pre-post__tag">{{tag.tag}}</v-btn>
+          </div >
+        </v-layout>
+
+      </v-card-actions>
+      <v-card-actions>
         <v-btn depressed class="pre-post-btn-like">Like</v-btn>
         <v-btn depressed class="pre-post-btn-follow">+Follow</v-btn>
       </v-card-actions>

@@ -6,14 +6,19 @@
 
 .v-btn{
   border-radius: 5px;
+
 }
 
 .pre-post-btn-like.theme--light.v-btn:not(.v-btn--icon):not(.v-btn--flat){
   background-color: #5DD0EE;
+  font-weight: bold;
+  color: #EDF3F3;
 }
 
 .pre-post-btn-follow.theme--light.v-btn:not(.v-btn--icon):not(.v-btn--flat){
   background-color: #5DEEC6;
+  font-weight: bold;
+  color: #EDF3F3;
 }
 
 .pre-post-img{
@@ -61,4 +66,18 @@
 
 .pre-post-text{
   color: #FFFFFF
+}
+
+.pre-post__tag.theme--light.v-btn:not(.v-btn--icon):not(.v-btn--flat){
+  background-color: #749FA2;
+  border-radius: 30px;
+  width: 15px;
+  height: 25px;
+  font-size: 15px;
+  text-transform: none;
+  font-weight: bold;
+  color: #EDF3F3;
+}
+.v-card__actions .v-btn.pre-post__tag {
+  margin-right: 10px;
 }
