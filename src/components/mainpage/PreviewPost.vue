@@ -9,16 +9,14 @@
       ></v-img>
       <div class="overlay">
         <v-layout class="info1" justify-space-around>
+
           <v-flex class="pre-post__autor-img">
-            <img class="avatar"
-                 ng-src="https://cdnb.artstation.com/p/users/avatars/000/277/319/medium/38f95e3050042f9d506d4f2b1dcd66eb.jpg"
-                 src="https://cdnb.artstation.com/p/users/avatars/000/277/319/medium/38f95e3050042f9d506d4f2b1dcd66eb.jpg"/>
+              <img class="avatar" :src="post.owner.avatar.link" :alt="post.owner.name">
           </v-flex>
           <v-flex class="pre-post__autor-name">
-            <div class="title pre-post-text">Red Boat Stylized</div>
-            <div class="pre-post-text">Janos Tokity</div>
+            <div class="title pre-post-text">{{post.title}}</div>
+            <div class="pre-post-text">{{post.owner.name}}</div>
           </v-flex>
-
 
         </v-layout>
       </div>
@@ -30,7 +28,7 @@
         <v-layout>
           <div v-for="tag in post.tags" >
             <v-btn class="pre-post__tag">{{tag.tag}}</v-btn>
-          </div >
+          </div>
         </v-layout>
 
       </v-card-actions>
