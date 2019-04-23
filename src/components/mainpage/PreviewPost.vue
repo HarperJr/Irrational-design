@@ -36,6 +36,11 @@
         <v-btn depressed class="pre-post-btn-like">Like</v-btn>
         <v-btn depressed class="pre-post-btn-follow">+Follow</v-btn>
       </v-card-actions>
+      <v-card-actions class="pre-post__bottom-info">
+        <v-card-text class="pre-post__info-likes">{{post.likes}} likes</v-card-text>
+        <v-card-text>560 views</v-card-text>
+        <v-card-text  class="pre-post__info-comments">{{post.comments}} comments</v-card-text>
+      </v-card-actions>
     </v-card>
 
   </v-flex>

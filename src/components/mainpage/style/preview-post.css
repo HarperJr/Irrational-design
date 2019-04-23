@@ -10,13 +10,13 @@
 }
 
 .pre-post-btn-like.theme--light.v-btn:not(.v-btn--icon):not(.v-btn--flat){
-  background-color: #5DD0EE;
+  background-color: #4ABDDB;
   font-weight: bold;
   color: #EDF3F3;
 }
 
 .pre-post-btn-follow.theme--light.v-btn:not(.v-btn--icon):not(.v-btn--flat){
-  background-color: #5DEEC6;
+  background-color: #2BD8A7;
   font-weight: bold;
   color: #EDF3F3;
 }
@@ -82,4 +82,21 @@
 }
 .v-card__actions .v-btn.pre-post__tag {
   margin-right: 6px;
+}
+
+.pre-post__bottom-info .v-card__text{
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  width: unset;
+  padding: 6px;
+  margin-right: 6px;
+  font-weight: bold;
+  color: #76A2A5;
+}
+
+.v-card__text.pre-post__info-likes{
+  color: #2BD8A7;
+}
+
+.v-card__text.pre-post__info-comments{
+  color: #4ABDDB;
 }
