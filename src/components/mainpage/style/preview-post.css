@@ -77,7 +77,9 @@
   text-transform: none;
   font-weight: bold;
   color: #EDF3F3;
+  margin-top: 8px;
+  margin-bottom: 8px;
 }
 .v-card__actions .v-btn.pre-post__tag {
-  margin-right: 10px;
+  margin-right: 6px;
 }

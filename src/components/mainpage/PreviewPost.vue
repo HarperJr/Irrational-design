@@ -20,18 +20,18 @@
 
         </v-layout>
       </div>
-      <v-card-title primary-title>
+      <!--v-card-title primary-title>
         <h3 class="headline mb-3">{{post.title}}</h3>
         <h3> {{ post.subtitle }} </h3>
-      </v-card-title>
+      </v-card-title-->
       <v-card-actions>
         <v-layout>
           <div v-for="tag in post.tags" >
             <v-btn class="pre-post__tag">{{tag.tag}}</v-btn>
           </div>
         </v-layout>
-
       </v-card-actions>
+      <hr color="#D7D7D7"/>
       <v-card-actions>
         <v-btn depressed class="pre-post-btn-like">Like</v-btn>
         <v-btn depressed class="pre-post-btn-follow">+Follow</v-btn>
