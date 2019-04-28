@@ -16,6 +16,7 @@
       </v-flex>
       <v-flex class="profile__raspolozheniye">
         <v-card-text>Nickname: Ivo</v-card-text>
+        <v-card-text>email: mars@mail.com</v-card-text>
       </v-flex>
         </v-card>
     </v-layout>
