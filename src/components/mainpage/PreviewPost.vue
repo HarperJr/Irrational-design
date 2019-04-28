@@ -3,16 +3,17 @@
   <v-flex xs12 md4>
 
     <v-card class="pre-post-position">
-
+      <router-link :to="{name:'post'}">
       <v-img class="pre-post-img"
              :src="post.preview.link"
       ></v-img>
 
       <div class="overlay">
+
         <v-layout class="info1" justify-space-around>
 
           <v-flex class="pre-post__autor-img">
-            <router-link :to="{name:'post'}"><img class="avatar" :src="post.owner.avatar.link" :alt="post.owner.name"></router-link>
+            <img class="avatar" :src="post.owner.avatar.link" :alt="post.owner.name">
           </v-flex>
           <v-flex class="pre-post__autor-name">
             <div class="title pre-post-text">{{post.title}}</div>
@@ -20,7 +21,9 @@
           </v-flex>
 
         </v-layout>
+
       </div>
+      </router-link>
       <!--v-card-title primary-title>
         <h3 class="headline mb-3">{{post.title}}</h3>
         <h3> {{ post.subtitle }} </h3>
