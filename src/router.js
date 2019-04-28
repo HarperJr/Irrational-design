@@ -3,6 +3,7 @@ import Router from 'vue-router'
 //Components
 import Feed from './components/mainpage/Feed.vue'
 import Post from './components/post/Post.vue'
+import Profile from './components/personalpage/Profile.vue'
 
 Vue.use(Router)
 export default new Router({
@@ -15,6 +16,10 @@ export default new Router({
       path: '/post',
       name: 'post',
       component: Post
+    }, {
+      path: '/profile',
+      name: 'profile',
+      component: Profile
     }
   ]
 })
