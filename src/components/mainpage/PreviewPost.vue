@@ -7,11 +7,12 @@
       <v-img class="pre-post-img"
              :src="post.preview.link"
       ></v-img>
+
       <div class="overlay">
         <v-layout class="info1" justify-space-around>
 
           <v-flex class="pre-post__autor-img">
-              <img class="avatar" :src="post.owner.avatar.link" :alt="post.owner.name">
+            <router-link :to="{name:'post'}"><img class="avatar" :src="post.owner.avatar.link" :alt="post.owner.name"></router-link>
           </v-flex>
           <v-flex class="pre-post__autor-name">
             <div class="title pre-post-text">{{post.title}}</div>
