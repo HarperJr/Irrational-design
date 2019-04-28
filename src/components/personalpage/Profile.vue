@@ -1,7 +1,8 @@
 <template>
+
   <v-container>
     <v-layout class="profile__raspolozheniye">
-
+      <v-card style="padding: 50px;">
       <v-flex class="profile__avatar">
         <v-avatar
                 :tile="tile"
@@ -13,8 +14,10 @@
           ></v-img>
         </v-avatar>
       </v-flex>
-      <v-flex>
+      <v-flex class="profile__raspolozheniye">
+        <v-card-text>Nickname: Ivo</v-card-text>
       </v-flex>
+        </v-card>
     </v-layout>
   </v-container>
 </template>
@@ -29,6 +32,14 @@
           required: true
         },
       }
+    },
+    created() {
+      axios.get('http://localhost:8080/api/user.json', { headers: {'Access-Control-Allow-Origin': '*'} })
+          .then(response => {
+            this.user = response.data;
+            //console.log(this.posts);
+          })
+          .catch(e => console.log(e))
     }
   }
 
