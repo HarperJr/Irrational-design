@@ -5,18 +5,17 @@
       <v-card style="padding: 50px;">
       <v-flex class="profile__avatar">
         <v-avatar
-                :tile="tile"
                 :size="250"
                 color="grey lighten-4"
         >
           <v-img
-                  :src="user.avatar"
+                  :src="user.avatar.link"
           ></v-img>
         </v-avatar>
       </v-flex>
       <v-flex class="profile__raspolozheniye">
-        <v-card-text>Nickname: Ivo</v-card-text>
-        <v-card-text>email: mars@mail.com</v-card-text>
+        <v-card-text>Nickname: {{user.name}}</v-card-text>
+        <v-card-text>email: {{user.email}}</v-card-text>
       </v-flex>
         </v-card>
     </v-layout>
@@ -24,6 +23,9 @@
 </template>
 
 <script>
+
+  const axios = require('axios');
+
   export default {
     name: "Profile",
     data() {
@@ -38,7 +40,7 @@
       axios.get('http://localhost:8080/api/user.json', { headers: {'Access-Control-Allow-Origin': '*'} })
           .then(response => {
             this.user = response.data;
-            //console.log(this.posts);
+            console.log(this.user);
           })
           .catch(e => console.log(e))
     }
