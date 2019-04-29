@@ -3,22 +3,30 @@
   <v-flex xs12 md4>
 
     <v-card class="pre-post-position">
-      <router-link :to="{name:'post'}">
-        <!--router-link :to="{name:'post'} params: { id: currentUserId }"-->
-        <v-img class="pre-post-img"
+      <!--router-link :to="{name:'post'} params: { id: currentUserId }"-->
+      <v-img class="pre-post-img"
                :src="post.preview.link"
         ></v-img>
-        <div class="overlay">
-          <v-layout class="info1" justify-space-around>
+      <router-link :to="{name:'post', params: { id: post.id }} ">
+
+      <div class="overlay">
+          <v-layout  class="info1" justify-space-around>
             <v-flex class="pre-post__autor-img">
-              <img class="avatar" :src="post.owner.avatar.link" :alt="post.owner.name">
+              <router-link :to="{name:'profile', params: { id: post.owner.permalink }} ">
+                <img class="avatar" :src="post.owner.avatar.link" :alt="post.owner.name">
+              </router-link>
             </v-flex>
             <v-flex class="pre-post__autor-name">
-              <div class="title pre-post-text">{{post.title}}</div>
-              <div class="pre-post-text">{{post.owner.name}}</div>
+              <div class="title pre-post-text">
+                <router-link :to="{name:'post', params: { id: post.id }} ">{{post.title}}</router-link>
+              </div>
+              <div  class="pre-post-text">
+                <router-link :to="{name:'profile', params: { id: post.owner.permalink }} ">{{post.owner.name}}</router-link>
+              </div>
             </v-flex>
           </v-layout>
         </div>
+
       </router-link>
       <!--v-card-title primary-title>
         <h3 class="headline mb-3">{{post.title}}</h3>
@@ -54,6 +62,11 @@
     props: {
       post: {
         required: true
+      }
+    },
+    methods: {
+      navigateTo(where, id, item){
+        this.$router.push({name: where, params: {id}, query: item});
       }
     }
   }

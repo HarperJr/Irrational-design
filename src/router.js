@@ -13,11 +13,11 @@ export default new Router({
       name: 'feed',
       component: Feed
     }, {
-      path: '/post',
+      path: '/post/:id',
       name: 'post',
       component: Post
     }, {
-      path: '/profile',
+      path: '/profile/:id',
       name: 'profile',
       component: Profile
     }
