@@ -1,0 +1,26 @@
+.nav-logo{
+  padding-left: 10px;
+  padding-right: 40px;
+}
+
+.sub-nav-bar{
+  padding-left: 50px;
+
+}
+
+.sub-nav-bar .v-btn:hover{
+  background: #76A2A5;
+  color: #ffffff;
+}
+
+.sub-nav-bar .v-btn{
+  height: 65px;
+}
+
+.theme--light.v-toolbar {
+  background-color: #FFFFFF;
+}
+
+.irrd-sub-nav-bar .theme--light.v-toolbar{
+  background: #F9F9F9;
+}

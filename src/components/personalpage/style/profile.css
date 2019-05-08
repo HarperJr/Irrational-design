@@ -1,0 +1,7 @@
+.profile__avatar{
+  justify-content: center;
+}
+
+.profile__raspolozheniye{
+  flex-direction: column;
+}
