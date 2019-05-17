@@ -1,0 +1,36 @@
+.auth-form .child-flex>*, .flex{
+   display: flex;
+   justify-content: center;
+   padding-top: 100px;
+
+ }
+
+.auth-form div{
+  padding: 0px;
+}
+
+.auth-form .theme--light.v-sheet{
+  padding: 37px;
+}
+
+.auth-form v-text-field{
+  padding: 0px;
+}
+
+.auth-form-align{
+
+  flex-direction: column;
+
+}
+
+.auth-form .v-btn{
+
+  background-color: #4ABDDB;
+  font-weight: bold;
+  color: #EDF3F3;
+
+}
+
+.auth-form .form-register-bnt .v-btn{
+  background-color:#2BD8A7;
+}
