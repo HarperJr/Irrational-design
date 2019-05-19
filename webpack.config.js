@@ -75,6 +75,18 @@ module.exports = {
     },
     extensions: ['*', '.js', '.vue', '.json']
   },
+  plugins: [
+    new webpack.ProvidePlugin({
+      http: path.resolve(path.join(__dirname, 'src/http-client'))
+    }),
+    new webpack.DefinePlugin({
+      API_BASE_URL: '"http://134.209.84.128/"',
+      "typeof window": JSON.stringify("object"),
+      'process.env': {
+        NODE_ENV: '"developement"'
+      }
+    })
+  ],
   devServer: {
     historyApiFallback: true,
     noInfo: true,
