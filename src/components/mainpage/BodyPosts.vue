@@ -2,16 +2,13 @@
 
   <v-container>
     <v-layout align-center justify-center row wrap>
-        <PreviewPost v-for="post in posts" :key="post.id" :post="posts[0]"></PreviewPost>
-
+        <PreviewPost v-for="post in posts" :key="post.id" :post="posts"></PreviewPost>
     </v-layout>
   </v-container>
 </template>
 
 <script>
-  import PreviewPost from "./PreviewPost";
-
-  const axios = require('axios');
+  import PreviewPost from "./PreviewPost"
 
   export default {
     name: "BodyPosts",
@@ -24,10 +21,10 @@
       }
     },
     created() {
-      axios.get('http://localhost:8080/api/posts.json', { headers: {'Access-Control-Allow-Origin': '*'} })
+      http.get('posts/all')
           .then(response => {
             this.posts = response.data;
-            //console.log(this.posts);
+            console.log(this.posts);
           })
           .catch(e => console.log(e))
     },
