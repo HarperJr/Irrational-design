@@ -1,0 +1,52 @@
+.reg-form .child-flex>*, .flex{
+  display: flex;
+  justify-content: center;
+  padding-top: 100px;
+
+
+}
+
+.reg-form div{
+  padding: 0px;
+}
+
+.reg-form h3{
+  padding: 20px;
+  text-align: center;
+}
+
+.reg-form .theme--light.v-sheet{
+  padding: 37px;
+  width: 44%;
+}
+
+.reg-form v-text-field{
+  padding: 0px;
+}
+
+.reg-form-align{
+  align-items: center;
+  flex-direction: column;
+
+
+}
+
+.reg-form-align .v-input__control{
+  width: 320px;
+}
+
+.reg-form .v-btn{
+
+  background-color: #4ABDDB;
+  font-weight: bold;
+  color: #EDF3F3;
+
+}
+
+.v-card__actions{
+  justify-content: center;
+}
+
+.reg-form .form-register-bnt .v-btn{
+  background-color:#2BD8A7;
+}
