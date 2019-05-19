@@ -6,6 +6,7 @@ import Post from './components/post/Post.vue'
 import Profile from './components/personalpage/Profile.vue'
 import Auth from './components/authpage/Auth.vue'
 import Reg from './components/regpage/Reg.vue'
+import Createpost from './components/createpost/Createpost.vue'
 
 Vue.use(Router)
 export default new Router({
@@ -30,6 +31,10 @@ export default new Router({
     path: '/reg',
     name: 'reg',
     component: Reg
+    },{
+    path: '/createpost',
+    name: 'createpost',
+    component: Createpost
     }
   ]
 })
