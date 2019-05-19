@@ -22,8 +22,8 @@ export default new Router({
       name: 'profile',
       component: Profile
     },{
-      path: '/authorization',
-      name: 'authorization',
+      path: '/auth',
+      name: 'auth',
       component: Auth
     }
   ]

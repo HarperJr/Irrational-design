@@ -43,7 +43,7 @@
     },
     methods: {
       submit() {
-        axios.post('http://134.209.84.128/auth', {
+        http.post('/auth', {
           name: this.name, password: this.password
         })
             .then(response => {
