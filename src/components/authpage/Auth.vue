@@ -2,6 +2,7 @@
   <v-layout>
     <v-flex class="auth-form">
       <v-card>
+        <h3 class="headline mb-0">Регистрация пользователя</h3>
         <v-form>
           <div class="auth-form-align">
             <v-flex xs12 sm6>
