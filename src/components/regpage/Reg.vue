@@ -10,7 +10,7 @@
             <div class="reg-form-align">
               <v-flex xs12 sm6>
                 <v-text-field
-                        v-model="name"
+                        v-model="regCredentials.name"
                         label="Name"
                         single-line
                         required
@@ -18,7 +18,7 @@
               </v-flex>
               <v-flex xs12 sm6>
                 <v-text-field
-                        v-model="password"
+                        v-model="regCredentials.password"
                         required
                         label="Password"
                         type="password"
@@ -36,7 +36,7 @@
               </v-flex>
               <v-flex xs12 sm6>
                 <v-text-field
-                        v-model="mail"
+                        v-model="regCredentials.email"
                         label="E-mail"
                         single-line
                         required
@@ -62,7 +62,7 @@
           </v-layout>
 
           <v-card-actions>
-            <v-btn flat class="form-register-bnt">Зарегистрироваться</v-btn>
+            <v-btn flat class="form-register-bnt" @onclick="submit">Зарегистрироваться</v-btn>
           </v-card-actions>
         </v-form>
       </v-card>
@@ -74,10 +74,29 @@
   import VImageInput from 'vuetify-image-input';
 
   export default {
+    name: "Reg",
+    data() {
+      return {
+        regCredentials: {
+          name: '',
+          password: '',
+          email: ''
+        }
+      }
+    },
     components: {
       [VImageInput.name]: VImageInput,
     },
-    name: "Reg"
+    methods: {
+      submit() {
+        this.$store.dispatch('register', {
+          credentials: this.regCredentials,
+          callback: () => {
+            this.$router.push('/')
+          }
+        })
+      }
+    }
   }
 </script>
 
