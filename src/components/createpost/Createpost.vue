@@ -6,7 +6,6 @@
             <h3 class="headline mb-0">Добавить пост</h3>
           </v-card-title>
           <v-card-text>
-
               <v-layout p5>
                 <v-flex md6>
                   <v-layout column>
@@ -158,55 +157,7 @@
   export default {
     data () {
       return {
-        isEditing: true,
-        model: null,
-        states: [
-          'Alabama', 'Alaska', 'American Samoa', 'Arizona',
-          'Arkansas', 'California', 'Colorado', 'Connecticut',
-          'Delaware', 'District of Columbia', 'Federated States of Micronesia',
-          'Florida', 'Georgia', 'Guam', 'Hawaii', 'Idaho',
-          'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky',
-          'Louisiana', 'Maine', 'Marshall Islands', 'Maryland',
-          'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi',
-          'Missouri', 'Montana', 'Nebraska', 'Nevada',
-          'New Hampshire', 'New Jersey', 'New Mexico', 'New York',
-          'North Carolina', 'North Dakota', 'Northern Mariana Islands', 'Ohio',
-          'Oklahoma', 'Oregon', 'Palau', 'Pennsylvania', 'Puerto Rico',
-          'Rhode Island', 'South Carolina', 'South Dakota', 'Tennessee',
-          'Texas', 'Utah', 'Vermont', 'Virgin Island', 'Virginia',
-          'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
-        ],
-        imageData: "",
-        description: null,
-        subtitle: null,
-        title: null,
-        activator: null,
-        attach: null,
-        colors: ['green', 'purple', 'indigo', 'cyan', 'teal', 'orange'],
-        editing: null,
-        index: -1,
-        items: [
-          { header: 'Select an option or create one' },
-          {
-            text: 'Foo',
-            color: 'blue'
-          },
-          {
-            text: 'Bar',
-            color: 'red'
-          }
-        ],
-        nonce: 1,
-        menu: false,
-        model: [
-          {
-            text: 'Foo',
-            color: 'blue'
-          }
-        ],
-        x: 0,
-        search: null,
-        y: 0
+
       }
     },
     components: {
