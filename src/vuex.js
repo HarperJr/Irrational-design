@@ -5,7 +5,11 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     feed: null,
-    post: null
+    post: null,
+    comments: [],
+    artist: null,
+    credentials: null,
+    followed: false
   },
   getters: {
     feed: state => state.feed,
@@ -13,17 +17,22 @@ export default new Vuex.Store({
   },
   mutations: {
     set_token: (state, payload) => {
-      localStorage.token = payload.data.jwt_token
+      localStorage.token = payload.jwt_token
     },
     set_feed: (state, payload) => state.feed = payload,
-    set_post: (state, payload) => state.post = payload
+    set_post: (state, payload) => state.post = payload,
+    set_comments: (state, payload) => state.comments = payload,
+    add_comment: (state, payload) => state.comments.push(payload),
+    set_credentials: (state, payload) => state.credentials = payload,
+    set_artist: (state, payload) => state.artist = payload,
+    set: (state, payload) => state.followed = payload
   },
   actions: {
     //Авторизация
     authorize: (context, payload) => {
       http.post('/auth', payload.credentials)
       .then(res => {
-        context.commit('set_token', res)
+        context.commit('set_token', res.data)
         payload.callback()
       })
       .catch(ex => console.log(ex))
@@ -58,7 +67,7 @@ export default new Vuex.Store({
           type: 'application/json'
         })
       )
-      payload.arts.forEach(art, i, arr => {
+      payload.arts.forEach((art, i, arr) => {
         multipart.append(`image_${i}`,
           new Blob([art], {
             type: 'image/*'
@@ -71,9 +80,45 @@ export default new Vuex.Store({
       })
       .catch(ex => console.log(ex))
     },
+    //Получение комментариев к посту
+    get_comments: (context, payload) => {
+      http.get(`/posts/${payload.postId}/comments`)
+      .then(res => {
+        context.commit('set_comments', payload.data)
+      })
+      .catch(ex => console.log(ex))
+    },
     //Добавление комментария
     comment: (context, payload) => {
-
+      http.post(`/posts/${payload.postId}/comment`, payload)
+      .then(res => {
+        context.commit('add_comment', payload.data)
+      })
+      .catch(ex => console.log(ex))
+    },
+    //Запрос к личным данным
+    get_credentials: (context, payload) => {
+      http.get('/credentials')
+      .then(res => {
+        context.commit('set_credentials', res.data)
+      })
+      .catch(ex => console.log(ex))
+    },
+    //Детальные данные артиста
+    get_artist: (context, payload) => {
+      http.get(`/artist/${payload.artistId}`)
+      .then(res => {
+        context.commit('set_artist', res.data)
+      })
+      .catch(ex => console.log(ex))
+    },
+    //Подписан на артиста или нет
+    followed: (context, payload) => {
+      http.get(`/artist/${payload.artistId}/followed`)
+      .then(res => {
+        context.commit('set_followed', res.data)
+      })
+      .catch(ex => console.log(ex))
     }
   }
 })
