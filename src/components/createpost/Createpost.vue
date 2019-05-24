@@ -33,14 +33,16 @@
                             solo
                     >
                     </v-autocomplete>
+
+
                     <v-combobox
-                            v-model="tags"
+                            v-model="model"
                             :filter="filter"
                             :hide-no-data="!search"
                             :items="items"
                             :search-input.sync="search"
                             hide-selected
-                            label="Теги"
+                            label="Search for an option"
                             multiple
                             small-chips
                             solo
@@ -242,6 +244,7 @@
         this.editing = null
         this.index = -1
       }
+
     },
     filter (item, queryText, itemText) {
       if (item.header) return false
