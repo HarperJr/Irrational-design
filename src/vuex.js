@@ -17,7 +17,7 @@ export default new Vuex.Store({
   },
   mutations: {
     set_token: (state, payload) => {
-      localStorage.token = payload.jwt_token
+      //localStorage.token = payload.jwt_token
     },
     set_feed: (state, payload) => state.feed = payload,
     set_post: (state, payload) => state.post = payload,
@@ -25,14 +25,15 @@ export default new Vuex.Store({
     add_comment: (state, payload) => state.comments.push(payload),
     set_credentials: (state, payload) => state.credentials = payload,
     set_artist: (state, payload) => state.artist = payload,
-    set: (state, payload) => state.followed = payload
+    set: (state, payload) => state.followed = payload,
+
   },
   actions: {
     //Авторизация
     authorize: (context, payload) => {
       http.post('/auth', payload.credentials)
       .then(res => {
-        context.commit('set_token', res.data)
+        context.commit('set_token')
         payload.callback()
       })
       .catch(ex => console.log(ex))
@@ -62,7 +63,7 @@ export default new Vuex.Store({
     //Загрузка нового поста
     upload_post: (context, payload) => {
       let multipart = new FormData()
-      multipart.append("post_data",
+      multipart.append("post-part",
         new Blob([JSON.stringify(payload.post)], {
           type: 'application/json'
         })

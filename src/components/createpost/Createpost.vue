@@ -44,7 +44,7 @@
 
 
                     <v-combobox
-                            v-model="postPayload.post.tags"
+                            v-model="model"
                             :filter="filter"
                             :hide-no-data="!search"
                             :items="items"
@@ -171,6 +171,7 @@
         isEditing: true,
         model: null,
         errors: [],
+        tags: [],
         states: [
           'Alabama', 'Alaska', 'American Samoa', 'Arizona',
           'Arkansas', 'California', 'Colorado', 'Connecticut',
@@ -291,7 +292,7 @@
       if (!this.postPayload.post.categories.length) {
         this.errors.push('Требуется указать категорию.');
       }
-      if (!this.postPayload.post.tags.length) {
+      if (!this.tags.length) {
         this.errors.push('Введите теги.');
       }
       if (!this.postPayload.arts.length) {
@@ -303,7 +304,9 @@
       e.preventDefault();
     },
     uploadData(){
-      console.log(this.postPayload)
+
+      this.postPayload.post.tags = Array.from(this.tags, x => x.text);
+      console.log(this.postPayload);
       this.$store.dispatch('upload_post', this.postPayload);
     }
   }
