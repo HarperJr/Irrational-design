@@ -141,7 +141,7 @@
 
           </v-card-text>
           <v-card-actions>
-            <v-btn flat class="form-register-bnt">Сохранить</v-btn>
+            <v-btn flat class="form-register-bnt" @click="uploadData">Сохранить</v-btn>
           </v-card-actions>
         </v-card>
         </v-form>
@@ -156,6 +156,27 @@
 
 <script>
   import VImageInput from 'vuetify-image-input';
+
+  import axios from 'axios';
+  import FormDataPost from '/upload';
+
+
+  export default function (url, file, name = 'avatar') {
+    if (typeof url !== 'string') {
+      throw new TypeError(`Expected a string, got ${typeof url}`);
+    }
+
+    // You can add checks to ensure the url is valid, if you wish
+
+    const formData = new FormData();
+    formData.append(name, file);
+    const config = {
+      headers: {
+        'content-type': 'multipart/form-data'
+      }
+    };
+    return axios.post(url, formData, config);
+  };
 
   export default {
     data () {
@@ -257,6 +278,9 @@
       return text.toString()
           .toLowerCase()
           .indexOf(query.toString().toLowerCase()) > -1
+    },
+    uploadData(){
+
     }
   }
   }
