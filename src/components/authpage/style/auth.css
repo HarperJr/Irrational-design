@@ -1,0 +1,52 @@
+.auth-form .child-flex>*, .flex{
+   display: flex;
+   justify-content: center;
+   padding-top: 100px;
+
+ }
+
+.auth-form div{
+  padding: 0px;
+}
+
+.auth-form .theme--light.v-sheet{
+  padding: 37px;
+  width: 20%;
+}
+
+.auth-form-align .v-input__control{
+  width: 320px;
+}
+
+.auth-form v-text-field{
+  padding: 0px;
+}
+
+.v-card__actions{
+  justify-content: center;
+}
+
+.auth-form-align{
+
+  flex-direction: column;
+  align-items: center;
+
+}
+
+.auth-form .v-btn{
+
+  background-color: #4ABDDB;
+  font-weight: bold;
+  color: #EDF3F3;
+
+
+}
+
+.auth-form h3{
+  padding: 20px;
+  text-align: center;
+}
+
+.auth-form .form-register-bnt {
+  background-color:#2BD8A7;
+}

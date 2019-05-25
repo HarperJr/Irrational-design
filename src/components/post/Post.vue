@@ -68,6 +68,9 @@
         }
       }
     },
+    props: {
+      postId: String
+    },
     methods: {
       onFollowBtnClicked: function() {
         console.log("onFollowBtnClicked")
@@ -80,16 +83,9 @@
       }
     },
     created() {
-      axios.get('http://localhost:8080/api/comments.json')
-      .then(response => {
-        this.comments = response.data
+      this.$store.dispatch('get_post', {
+        postId: this.postId
       })
-      .catch(e => console.log(e))
-      axios.get('http://localhost:8080/api/post.json')
-      .then(response => {
-        this.post = response.data
-      })
-      .catch(e => console.log(e))
     },
     components: {
       Comment, Art
