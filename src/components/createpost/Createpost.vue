@@ -297,14 +297,14 @@
       if (!this.postPayload.arts.length) {
         this.errors.push('Выберите изображение.');
       }
-      if(!this.errors.length) {
+      if(this.errors.length == 0) {
         this.uploadData();
       }
       e.preventDefault();
     },
     uploadData(){
       console.log(this.postPayload)
-      upload_post(null, this.postPayload);
+      this.$store.dispatch('upload_post', this.postPayload);
     }
   }
   }
