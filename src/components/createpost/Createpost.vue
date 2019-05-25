@@ -292,9 +292,9 @@
       if (!this.postPayload.post.categories.length) {
         this.errors.push('Требуется указать категорию.');
       }
-      if (!this.tags.length) {
+      if (!this.model.length) {
         this.errors.push('Введите теги.');
-      }
+       }
       if (!this.postPayload.arts.length) {
         this.errors.push('Выберите изображение.');
       }
@@ -305,7 +305,7 @@
     },
     uploadData(){
 
-      this.postPayload.post.tags = Array.from(this.tags, x => x.text);
+      this.postPayload.post.tags = Array.from(this.model, x => x.text);
       console.log(this.postPayload);
       this.$store.dispatch('upload_post', this.postPayload);
     }
