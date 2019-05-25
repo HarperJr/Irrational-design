@@ -9,7 +9,7 @@ Vue.use(Vueco)
 new Vue({
   el: '#app',
   router: Router,
-  vuex: Vuex,
+  store: Vuex,
   vuetify: Vuetify,
   render: (h) => h(App)
 })

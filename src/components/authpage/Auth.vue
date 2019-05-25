@@ -7,7 +7,7 @@
           <div class="auth-form-align">
             <v-flex xs12 sm6>
               <v-text-field
-                      v-model="name"
+                      v-model="authCredentials.name"
                       label="Name"
                       single-line
                       required
@@ -15,7 +15,7 @@
             </v-flex>
             <v-flex xs12 sm6>
               <v-text-field
-                      v-model="name"
+                      v-model="authCredentials.password"
                       required
                       label="Password"
                       single-line
@@ -38,19 +38,20 @@
     name: "Auth",
     data() {
       return {
-        name: '',
-        password: ''
+        authCredentials: {
+          name: '',
+          password: ''
+        }
       }
     },
     methods: {
       submit() {
-        http.post('/auth', {
-          name: this.name, password: this.password
+        this.$store.dispatch('authorize', {
+          credentials: this.authCredentials,
+          callback: () => {
+            this.$router.push('/')
+          }
         })
-            .then(response => {
-
-            })
-            .catch(e => console.log(e))
       }
     }
   }

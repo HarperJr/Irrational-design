@@ -83,16 +83,9 @@
       }
     },
     created() {
-      http.get('post/${postId}/comments')
-      .then(response => {
-        this.comments = response.data
+      this.$store.dispatch('get_post', {
+        postId: this.postId
       })
-      .catch(e => console.log(e))
-      http.get('/post/${postId}')
-      .then(response => {
-        this.post = response.data
-      })
-      .catch(e => console.log(e))
     },
     components: {
       Comment, Art
