@@ -1,29 +1,37 @@
 <template>
       <v-container>
-        <v-form>
+        <v-form
+        >
         <v-card class="create-post">
           <v-card-title>
             <h3 class="headline mb-0">Добавить пост</h3>
           </v-card-title>
           <v-card-text>
-
+              <v-layout >
+                <div class="errors" v-if="errors.length">
+                  <b>Пожалуйста исправьте указанные ошибки:</b>
+                  <ul>
+                    <li v-for="error in errors">{{ error }}</li>
+                  </ul>
+                </div>
+              </v-layout>
               <v-layout p5>
                 <v-flex md6>
                   <v-layout column>
                     <v-text-field
-                            v-model="title"
+                            v-model="postPayload.post.title"
                             label="Заголовок"
                             single-line
                             required
                             solo></v-text-field>
                     <v-text-field
-                            v-model="subtitle"
+                            v-model="postPayload.post.subtitle"
                             required
                             label="Подзаголовок"
                             single-line
                             solo></v-text-field>
                     <v-autocomplete
-                            v-model="model"
+                            v-model="postPayload.post.categories"
                             :items="states"
                             label="Категории"
                             multiple
@@ -36,7 +44,7 @@
 
 
                     <v-combobox
-                            v-model="model"
+                            v-model="postPayload.post.tags"
                             :filter="filter"
                             :hide-no-data="!search"
                             :items="items"
@@ -111,7 +119,7 @@
                     </v-combobox>
 
                     <v-textarea
-                            v-model="description"
+                            v-model="postPayload.post.description"
                             required
                             label="Описание"
                             single-line
@@ -124,7 +132,7 @@
                   <v-layout column>
                     <v-flex md12>
                       <v-image-input
-                              v-model="imageData"
+                              v-model="postPayload.arts[0]"
                               :image-quality="0.85"
                               clearable
                               image-format="jpeg"
@@ -141,7 +149,7 @@
 
           </v-card-text>
           <v-card-actions>
-            <v-btn flat class="form-register-bnt" @click="uploadData">Сохранить</v-btn>
+            <v-btn flat class="form-register-bnt" @click="checkForm" >Сохранить</v-btn>
           </v-card-actions>
         </v-card>
         </v-form>
@@ -157,32 +165,12 @@
 <script>
   import VImageInput from 'vuetify-image-input';
 
-  import axios from 'axios';
-  import FormDataPost from '/upload';
-
-
-  export default function (url, file, name = 'avatar') {
-    if (typeof url !== 'string') {
-      throw new TypeError(`Expected a string, got ${typeof url}`);
-    }
-
-    // You can add checks to ensure the url is valid, if you wish
-
-    const formData = new FormData();
-    formData.append(name, file);
-    const config = {
-      headers: {
-        'content-type': 'multipart/form-data'
-      }
-    };
-    return axios.post(url, formData, config);
-  };
-
   export default {
     data () {
       return {
         isEditing: true,
         model: null,
+        errors: [],
         states: [
           'Alabama', 'Alaska', 'American Samoa', 'Arizona',
           'Arkansas', 'California', 'Colorado', 'Connecticut',
@@ -200,9 +188,17 @@
           'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
         ],
         imageData: "",
-        description: null,
-        subtitle: null,
-        title: null,
+        postPayload: {
+          post: {
+            title: null,
+            subtitle: null,
+            description: null,
+            categories: [],
+            tags: []
+          },
+          arts: []
+        },
+
         activator: null,
         attach: null,
         colors: ['green', 'purple', 'indigo', 'cyan', 'teal', 'orange'],
@@ -279,8 +275,36 @@
           .toLowerCase()
           .indexOf(query.toString().toLowerCase()) > -1
     },
-    uploadData(){
+    checkForm: function (e) {
+      if (this.name && this.age) {
+        return true;
+      }
 
+      this.errors = [];
+
+      if (!this.postPayload.post.title) {
+        this.errors.push('Требуется указать заголовок.');
+      }
+      if (!this.postPayload.post.subtitle) {
+        this.errors.push('Требуется указать подзаголовок.');
+      }
+      if (!this.postPayload.post.categories.length) {
+        this.errors.push('Требуется указать категорию.');
+      }
+      if (!this.postPayload.post.tags.length) {
+        this.errors.push('Введите теги.');
+      }
+      if (!this.postPayload.arts.length) {
+        this.errors.push('Выберите изображение.');
+      }
+      if(!this.errors.length) {
+        this.uploadData();
+      }
+      e.preventDefault();
+    },
+    uploadData(){
+      console.log(this.postPayload)
+      upload_post(null, this.postPayload);
     }
   }
   }
