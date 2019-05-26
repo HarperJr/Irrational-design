@@ -17,7 +17,7 @@ export default new Vuex.Store({
   },
   mutations: {
     set_token: (state, payload) => {
-      //localStorage.token = payload.jwt_token
+      localStorage.token = payload.data.jwt_token
     },
     set_feed: (state, payload) => state.feed = payload,
     set_post: (state, payload) => state.post = payload,
@@ -33,7 +33,7 @@ export default new Vuex.Store({
     authorize: (context, payload) => {
       http.post('/auth', payload.credentials)
       .then(res => {
-        context.commit('set_token')
+        context.commit('set_token', res)
         payload.callback()
       })
       .catch(ex => console.log(ex))
