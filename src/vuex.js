@@ -9,15 +9,21 @@ export default new Vuex.Store({
     comments: [],
     artist: null,
     credentials: null,
-    followed: false
+    followed: false,
+    categories: []
   },
   getters: {
     feed: state => state.feed,
-    post: state => state.post
+    post: state => state.post,
+    comments: state => state.comments,
+    artist: state => state.artist,
+    credentials: state => state.credentials,
+    followed: state => state.followed,
+    categories: state => state.categories
   },
   mutations: {
     set_token: (state, payload) => {
-      localStorage.token = payload.jwt_token
+      localStorage.token = payload
     },
     set_feed: (state, payload) => state.feed = payload,
     set_post: (state, payload) => state.post = payload,
@@ -25,14 +31,15 @@ export default new Vuex.Store({
     add_comment: (state, payload) => state.comments.push(payload),
     set_credentials: (state, payload) => state.credentials = payload,
     set_artist: (state, payload) => state.artist = payload,
-    set: (state, payload) => state.followed = payload
+    set_followed: (state, payload) => state.followed = payload,
+    set_categories: (state, payload) => state.categories = payload
   },
   actions: {
     //Авторизация
     authorize: (context, payload) => {
       http.post('/auth', payload.credentials)
       .then(res => {
-        context.commit('set_token', res.data)
+        context.commit('set_token', res.data.jwt_token)
         payload.callback()
       })
       .catch(ex => console.log(ex))
@@ -117,6 +124,14 @@ export default new Vuex.Store({
       http.get(`/artist/${payload.artistId}/followed`)
       .then(res => {
         context.commit('set_followed', res.data)
+      })
+      .catch(ex => console.log(ex))
+    },
+    //Список категорий
+    get_categories: (context, payload) => {
+      http.get('/categories')
+      .then(res => {
+        context.commit('set_categories', res.data)
       })
       .catch(ex => console.log(ex))
     }
