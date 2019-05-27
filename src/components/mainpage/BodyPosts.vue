@@ -28,6 +28,9 @@
           })
           .catch(e => console.log(e))
     },
+    computed: {
+
+    },
     components: {
       PreviewPost
     }

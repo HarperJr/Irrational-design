@@ -172,14 +172,13 @@
         model: null,
         errors: [],
         tags: [],
-        categories: this.$store.getters.categories,
+        //categories: this.$store.getters.categories,
         imageData: "",
         postPayload: {
           post: {
             title: null,
             subtitle: null,
             description: null,
-            categories: [],
             tags: []
           },
           arts: []
@@ -212,6 +211,11 @@
         x: 0,
         search: null,
         y: 0
+      }
+    },
+    computed: {
+      categories: function() {
+        return this.$store.getters.categories
       }
     },
     components: {
