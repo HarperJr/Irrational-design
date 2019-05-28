@@ -68,9 +68,6 @@
         }
       }
     },
-    props: {
-      postId: String
-    },
     methods: {
       onFollowBtnClicked: function() {
         console.log("onFollowBtnClicked")
@@ -84,7 +81,7 @@
     },
     created() {
       this.$store.dispatch('get_post', {
-        postId: this.postId
+        postId: this.$route.params.id
       })
     },
     components: {

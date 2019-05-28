@@ -8,41 +8,46 @@
     </v-toolbar-items>
     <v-spacer></v-spacer>
     <v-toolbar-items>
-      <!--v-btn flat>Войти</v-btn-->
-      <!--v-btn flat>Зарегистрироваться</v-btn-->
-      <div class="btn-nickname">
-        <v-btn flat class="btn-options">
-          Nickname
-        </v-btn>
-        <div class="nickname__dropdown">
-          <v-btn flat class="btn-settings">
-            Account
+      <v-flex v-if="credentials !== undefined">
+        <!--Show component-->
+        <div class="btn-nickname">
+          <v-btn flat class="btn-options">
+            Nickname
           </v-btn>
-          <v-btn flat class="btn-settings">
-            Settings
-          </v-btn>
-          <v-btn flat class="btn-settings">
-            Log Out
-          </v-btn>
+          <div class="nickname__dropdown">
+            <v-btn flat class="btn-settings">
+              Account
+            </v-btn>
+            <v-btn flat class="btn-settings">
+              Settings
+            </v-btn>
+            <v-btn flat class="btn-settings">
+              Log Out
+            </v-btn>
 
+          </div>
         </div>
-      </div>
-      <v-flex
-              xs12
-              sm6
-              md8
-              align-center
-              justify-center
-              layout
-              text-xs-center
-      >
-        <v-avatar
-                :tile="tile"
-                :size="avatarSize"
-                color="grey lighten-4"
+        <v-flex
+                xs12
+                sm6
+                md8
+                align-center
+                justify-center
+                layout
+                text-xs-center
         >
-          <img src="https://vuetifyjs.com/apple-touch-icon-180x180.png" alt="avatar">
-        </v-avatar>
+          <v-avatar
+                  :tile="tile"
+                  :size="avatarSize"
+                  color="grey lighten-4"
+          >
+            <img src="https://vuetifyjs.com/apple-touch-icon-180x180.png" alt="avatar">
+          </v-avatar>
+        </v-flex>
+      </v-flex>
+      <v-flex v-else>
+        <v-btn flat>Войти</v-btn>
+        <v-btn flat>Зарегистрироваться</v-btn>
       </v-flex>
     </v-toolbar-items>
   </v-toolbar>
@@ -50,7 +55,15 @@
 
 <script>
   export default {
-    name: 'Navbar'
+    name: 'Navbar',
+    mounted() {
+      this.$store.dispatch('get_credentials')
+    },
+    computed: {
+      credentials: function() {
+        return this.$store.getters.credentials
+      }
+    }
   }
 </script>
 

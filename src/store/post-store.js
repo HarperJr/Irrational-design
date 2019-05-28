@@ -14,7 +14,7 @@ export default {
   actions: {
     //Детальная информация о посте
     get_post: (context, payload) => {
-      http.get(`/posts/${payload.postId}`)
+      http.get(`/post/${payload.postId}`)
       .then(res => context.commit('set_post', res))
       .catch(ex => console.log(ex))
     },

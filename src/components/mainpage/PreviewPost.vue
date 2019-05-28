@@ -59,7 +59,6 @@
 <script>
   export default {
     name: "Post.vue",
-
     props: {
       post: {
         required: true
