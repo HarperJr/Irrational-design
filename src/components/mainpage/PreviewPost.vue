@@ -5,7 +5,8 @@
     <v-card class="pre-post-position">
       <!--router-link :to="{name:'post'} params: { id: currentUserId }"-->
       <v-img class="pre-post-img"
-               :src="`${API_BASE_URL}/arts/${post.preview}`"
+               :src="previewUrl"
+
         ></v-img>
       <router-link :to="{name:'post', params: { id: post.id }} ">
 
@@ -33,7 +34,7 @@
         <h3> {{ post.subtitle }} </h3>
       </v-card-title-->
       <v-card-actions>
-        <v-layout>
+        <v-layout class="pre-post__show-tag">
           <div v-for="tag in post.tags">
             <v-btn class="pre-post__tag">{{tag.name}}</v-btn>
           </div>
@@ -64,9 +65,15 @@
         required: true
       }
     },
+    computed: {
+      previewUrl: function () {
+        return `${API_BASE_URL}/arts/${this.post.preview}`
+      }
+    },
     methods: {
       navigateTo(where, id, item){
         this.$router.push({name: where, params: {id}, query: item});
+
       }
     }
   }

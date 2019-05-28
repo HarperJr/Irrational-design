@@ -1,7 +1,7 @@
 
 .pre-post-position.v-sheet{
   margin: 50px;
-  width: 100%;
+  width: 501px;
 }
 
 .v-btn{
@@ -81,7 +81,14 @@
 }
 .v-card__actions .v-btn.pre-post__tag {
   margin-right: 6px;
+  display: flex;
+
 }
+
+.pre-post__show-tag {
+  overflow: hidden !important;
+}
+
 
 .pre-post__bottom-info .v-card__text{
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
