@@ -6,7 +6,7 @@ body {
 div {
   display: flex;
 }
-
+.header {z-index: 1;}
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   color: #2c3e50;
@@ -16,8 +16,33 @@ div {
   flex-direction: column;
 }
 
+.v-toolbar__items .v-btn:not(.v-btn--floating):not(.v-btn--icon), .v-toolbar__items .v-menu, .v-toolbar__items .v-menu__activator .btn-nickname{
+  margin-right: 20px;
+}
 
 
+
+.btn-nickname {
+  flex-direction: column;
+
+  justify-content: center;
+  height: 100%;
+  padding-right: 10px;
+}
+.nickname__dropdown {
+  flex-direction: column;
+  position: absolute;
+  background: #FFFFFF;
+  padding: 15px;
+  top: 100%;
+  heigth: 0;
+  opacity: 0;
+  transition: all .5s ease;
+}
+.btn-nickname:hover .nickname__dropdown{
+  height: auto;
+  opacity: 1;
+}
 .btn{
   position: relative;
   display: block;

@@ -1,17 +1,21 @@
-.auth-form .child-flex>*, .flex{
+.auth-form .child-flex>*, .auth-form .flex{
    display: flex;
    justify-content: center;
-   padding-top: 100px;
+   padding-top: 10px;
+
 
  }
+
+.auth-form
 
 .auth-form div{
   padding: 0px;
 }
 
 .auth-form .theme--light.v-sheet{
-  padding: 37px;
+  padding: 17px;
   width: 405px;
+  margin: 110px auto;
 }
 
 .auth-form-align .v-input__control{

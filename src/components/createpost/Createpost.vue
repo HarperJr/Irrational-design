@@ -300,8 +300,8 @@
     uploadData(){
 
       this.postPayload.post.tags = Array.from(this.model, x => x.text);
-      console.log(this.postPayload);
-     // this.$store.dispatch('upload_post', this.postPayload);
+      //console.log(this.postPayload);
+      this.$store.dispatch('upload_post', this.postPayload);
     }
   }
   }
