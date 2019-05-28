@@ -24,7 +24,6 @@ div {
 
 .btn-nickname {
   flex-direction: column;
-
   justify-content: center;
   height: 100%;
   padding-right: 10px;
@@ -54,6 +53,8 @@ div {
   background-color: #5dd0ee;
   color: #ffffff;
 }
+
+
 
 .btn.blue {
   background-color: #5dd0ee;

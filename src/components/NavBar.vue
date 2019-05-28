@@ -11,7 +11,7 @@
       <!--v-btn flat>Войти</v-btn-->
       <!--v-btn flat>Зарегистрироваться</v-btn-->
       <div class="btn-nickname">
-        <v-btn flat>
+        <v-btn flat class="btn-options">
           Nickname
         </v-btn>
         <div class="nickname__dropdown">
