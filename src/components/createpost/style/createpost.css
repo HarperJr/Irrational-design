@@ -26,12 +26,9 @@
 .create-post.theme--light.v-sheet{
   padding: 37px;
   width: 1000px;
-  margin: 100px auto;
+  margin: 90px auto;
 }
 
-.create-post.theme--light.v-sheet{
-  margin: auto;
-}
 
 .create-post v-text-field{
   padding: 0px;
