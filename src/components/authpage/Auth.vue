@@ -18,6 +18,7 @@
                       v-model="authCredentials.password"
                       required
                       label="Password"
+                      type="password"
                       single-line
                       solo></v-text-field>
             </v-flex>
