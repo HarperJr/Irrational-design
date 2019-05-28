@@ -1,7 +1,7 @@
 .create-post .child-flex>*, .flex{
   display: flex;
   justify-content: center;
-  padding-top: 100px;
+  padding-top: 10px;
 
 }
 
@@ -26,6 +26,7 @@
 .create-post.theme--light.v-sheet{
   padding: 37px;
   width: 1000px;
+  margin: 100px auto;
 }
 
 .create-post.theme--light.v-sheet{

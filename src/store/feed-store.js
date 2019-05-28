@@ -13,7 +13,7 @@ export default {
     get_feed: (context, payload) => {
       http.get(`/posts/${payload.filter}`)
       .then(res => {
-        context.commit('set_feed', res)
+        context.commit('set_feed', res.data)
       })
       .catch(ex => console.log(ex))
     }

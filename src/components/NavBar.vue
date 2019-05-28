@@ -15,21 +15,16 @@
           Nickname
         </v-btn>
         <div class="nickname__dropdown">
-          <v-btn flat>
+          <v-btn flat class="btn-settings">
             Account
           </v-btn>
-          <v-btn flat>
-            Account
+          <v-btn flat class="btn-settings">
+            Settings
           </v-btn>
-          <v-btn flat>
-            Account
+          <v-btn flat class="btn-settings">
+            Log Out
           </v-btn>
-          <v-btn flat>
-            Account
-          </v-btn>
-          <v-btn flat>
-            Account
-          </v-btn>
+
         </div>
       </div>
       <v-flex

@@ -27,6 +27,7 @@
     },
     computed: {
       feed: function () {
+        //console.log(this.$store.getters.feed);
         return this.$store.getters.feed
       }
     },

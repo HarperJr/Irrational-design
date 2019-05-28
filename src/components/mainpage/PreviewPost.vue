@@ -5,7 +5,7 @@
     <v-card class="pre-post-position">
       <!--router-link :to="{name:'post'} params: { id: currentUserId }"-->
       <v-img class="pre-post-img"
-               :src="post.preview"
+               :src="`${API_BASE_URL}/arts/${post.preview}`"
         ></v-img>
       <router-link :to="{name:'post', params: { id: post.id }} ">
 

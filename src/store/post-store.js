@@ -21,7 +21,7 @@ export default {
     //Загрузка нового поста
     upload_post: (context, payload) => {
       let multipart = new FormData()
-      multipart.append("post_data",
+      multipart.append("post-part",
         new Blob([JSON.stringify(payload.post)], {
           type: 'application/json'
         })
