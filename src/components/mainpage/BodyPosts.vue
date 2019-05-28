@@ -2,7 +2,7 @@
 
   <v-container>
     <v-layout align-center justify-center row wrap>
-        <PreviewPost v-for="post in posts" :key="post.id" :post="posts"></PreviewPost>
+      <PreviewPost v-for="post in feed" :key="post.id" :post="post"></PreviewPost>
     </v-layout>
   </v-container>
 </template>
@@ -21,15 +21,14 @@
       }
     },
     created() {
-      http.get('posts/all')
-          .then(response => {
-            this.posts = response.data;
-            console.log(this.posts);
-          })
-          .catch(e => console.log(e))
+      this.$store.dispatch('get_feed', {
+        filter: 'all'
+      })
     },
     computed: {
-
+      feed: function () {
+        return this.$store.getters.feed
+      }
     },
     components: {
       PreviewPost

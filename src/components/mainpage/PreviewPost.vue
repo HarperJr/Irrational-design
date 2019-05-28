@@ -5,15 +5,15 @@
     <v-card class="pre-post-position">
       <!--router-link :to="{name:'post'} params: { id: currentUserId }"-->
       <v-img class="pre-post-img"
-               :src="post.preview.link"
+               :src="post.preview"
         ></v-img>
       <router-link :to="{name:'post', params: { id: post.id }} ">
 
       <div class="overlay">
           <v-layout  class="info1" justify-space-around>
             <v-flex class="pre-post__autor-img">
-              <router-link :to="{name:'profile', params: { id: post.owner.permalink }} ">
-                <img class="avatar" :src="post.owner.avatar.link" :alt="post.owner.name">
+              <router-link :to="{name:'profile', params: { id: post.artist.id }} ">
+                <img class="avatar" :src="post.artist.avatar" :alt="post.artist.name">
               </router-link>
             </v-flex>
             <v-flex class="pre-post__autor-name">
@@ -21,7 +21,7 @@
                 <router-link :to="{name:'post', params: { id: post.id }} ">{{post.title}}</router-link>
               </div>
               <div  class="pre-post-text">
-                <router-link :to="{name:'profile', params: { id: post.owner.permalink }} ">{{post.owner.name}}</router-link>
+                <router-link :to="{name:'profile', params: { id: post.artist.id }} ">{{post.artist.name}}</router-link>
               </div>
             </v-flex>
           </v-layout>
@@ -35,7 +35,7 @@
       <v-card-actions>
         <v-layout>
           <div v-for="tag in post.tags">
-            <v-btn class="pre-post__tag">{{tag.tag}}</v-btn>
+            <v-btn class="pre-post__tag">{{tag.name}}</v-btn>
           </div>
         </v-layout>
       </v-card-actions>
@@ -46,7 +46,7 @@
       </v-card-actions>
       <v-card-actions class="pre-post__bottom-info">
         <v-card-text class="pre-post__info-likes">{{post.likes}} нравится</v-card-text>
-        <v-card-text>560 просмотры</v-card-text>
+        <!--v-card-text>{{post.follows}} просмотры</v-card-text-->
         <v-card-text class="pre-post__info-comments">{{post.comments}} комментарии</v-card-text>
       </v-card-actions>
     </v-card>

@@ -71,7 +71,6 @@
 .pre-post__tag.theme--light.v-btn:not(.v-btn--icon):not(.v-btn--flat){
   background-color: #749FA2;
   border-radius: 30px;
-  width: 15px;
   height: 25px;
   font-size: 15px;
   text-transform: none;

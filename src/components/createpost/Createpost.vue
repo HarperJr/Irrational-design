@@ -134,8 +134,9 @@
                       <v-image-input
                               v-model="postPayload.arts[0]"
                               :image-quality="0.85"
+                              type="file"
                               clearable
-                              image-format="jpeg"
+                              image-format="png"
                       />
                     </v-flex>
                   </v-layout>
@@ -300,7 +301,7 @@
 
       this.postPayload.post.tags = Array.from(this.model, x => x.text);
       console.log(this.postPayload);
-      this.$store.dispatch('upload_post', this.postPayload);
+     // this.$store.dispatch('upload_post', this.postPayload);
     }
   }
   }
