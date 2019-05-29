@@ -12,6 +12,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "vue": "^2.5.11",
+    "vue-picture-input": "^2.1.6",
     "vue-router": "^3.0.2",
     "vuetify": "^1.5.9",
     "vuetify-image-input": "^18.15.1",

@@ -1,7 +1,9 @@
 export default {
   state: {
+    authorized: localStorage.token !== undefined
   },
   getters: {
+    authorized: state => state.authorized
   },
   mutations: {
     set_token: (state, payload) => {

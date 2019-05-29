@@ -8,7 +8,7 @@
     </v-toolbar-items>
     <v-spacer></v-spacer>
     <v-toolbar-items>
-      <v-flex v-if="credentials !== undefined">
+      <v-flex v-if="authorized">
         <!--Show component-->
         <div class="btn-nickname">
           <v-btn flat class="btn-options">
@@ -56,13 +56,29 @@
 <script>
   export default {
     name: 'Navbar',
-    mounted() {
-      this.$store.dispatch('get_credentials')
+    data() {
+      return {
+        authorized: this.$store.getters.authorized
+      }
     },
     computed: {
       credentials: function() {
         return this.$store.getters.credentials
       }
+    },
+    watch: {
+      authorized(newVal, oldVal) {
+        if (newVal !== oldVal) this.$store.dispatch('get_credentials')
+      }
+    },
+    mounted() {
+      this.$store.subscribe((mutation, state) => {
+        switch(mutation.type) {
+          case 'set_token': {
+            this.authorized = state !== undefined
+          }
+        }
+      })
     }
   }
 </script>
