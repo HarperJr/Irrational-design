@@ -15,7 +15,7 @@ export default {
     //Детальная информация о посте
     get_post: (context, payload) => {
       http.get(`/post/${payload.postId}`)
-      .then(res => context.commit('set_post', res))
+      .then(res => context.commit('set_post', res.data))
       .catch(ex => console.log(ex))
     },
     //Загрузка нового поста

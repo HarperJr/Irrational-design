@@ -1,6 +1,6 @@
 <template>
   <v-flex>
-    <img class="art" :src="art.link">
+    <img class="art" :src="artUrl">
   </v-flex>
 </template>
 
@@ -10,8 +10,12 @@
     props: {
       art: {
         link: String,
-        name: String,
         required: true
+      }
+    },
+    computed: {
+      artUrl: function() {
+        return `${API_BASE_URL}/arts/${this.art.link}`
       }
     }
   }
