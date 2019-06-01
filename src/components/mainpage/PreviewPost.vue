@@ -67,13 +67,13 @@
     computed: {
       previewUrl: function () {
         return `${API_BASE_URL}/arts/${this.post.preview}`
-      }
+      },
     },
     methods: {
       navigateTo(where, id, item){
         this.$router.push({name: where, params: {id}, query: item});
+      },
 
-      }
     }
   }
 </script>
