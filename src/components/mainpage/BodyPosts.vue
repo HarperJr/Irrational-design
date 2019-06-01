@@ -22,7 +22,9 @@
     },
     created() {
       this.$store.dispatch('get_feed', {
-        filter: 'all'
+        filter: 'all',
+        from: 0,
+        to: 100
       })
     },
     computed: {

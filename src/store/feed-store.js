@@ -11,7 +11,7 @@ export default {
   actions: {
     //Список постов на главной странице
     get_feed: (context, payload) => {
-      http.get(`/posts/${payload.filter}`)
+      http.get(`/posts/${payload.filter}?from=${payload.from}&to=${payload.to}`)
       .then(res => {
         context.commit('set_feed', res.data)
       })
