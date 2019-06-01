@@ -2,8 +2,8 @@
   <v-container fluid>
     <v-layout align-start>
 
-      <v-flex xs12 md5>
-        <v-card elevation="6">
+      <v-flex xs12 md5 class="post-card">
+        <v-card >
           <v-container>
             <v-layout column>
               <v-flex>
@@ -19,10 +19,11 @@
               <v-flex>
                 <h2>{{post.artist.email}}</h2>
               </v-flex>
-                <v-btn depressed color="#eff" @click="follow">+Follow</v-btn>
-              <v-flex>
-                <v-btn depressed color="#eff" @click="bookmark">Bookmark</v-btn>
-                <v-btn depressed color="#eff" @click="like">Like</v-btn>
+
+              <v-flex class="post-btn">
+                <v-btn depressed class="post-btn-follow" @click="follow">+Follow</v-btn>
+                <!--v-btn depressed class="post-btn-likes" @click="bookmark">Bookmark</v-btn-->
+                <v-btn depressed @click="like">Like</v-btn>
               </v-flex>
               <h1>{{post.title}}</h1>
               <h2>{{post.subtitle}}</h2>
