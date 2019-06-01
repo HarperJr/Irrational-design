@@ -9,22 +9,22 @@
             <v-flex md6>
             <div class="reg-form-align">
               <v-flex xs12 sm6>
-                <v-text-field v-model="name" label="Name" single-line required solo></v-text-field>
+                <v-text-field v-model="credentials.name" label="Name" single-line required solo></v-text-field>
               </v-flex>
               <v-flex xs12 sm6>
-                <v-text-field v-model="password" required label="Password" type="password" single-line solo></v-text-field>
+                <v-text-field v-model="credentials.password" required label="Password" type="password" single-line solo></v-text-field>
               </v-flex>
               <v-flex xs12 sm6>
-                <v-text-field v-model="password" required label="Password" type="password" single-line solo></v-text-field>
+                <v-text-field v-model="credentials.password" required label="Password" type="password" single-line solo></v-text-field>
               </v-flex>
               <v-flex xs12 sm6>
-                <v-text-field v-model="email" label="E-mail" single-line required solo></v-text-field>
+                <v-text-field v-model="credentials.email" label="E-mail" single-line required solo></v-text-field>
               </v-flex>
             </div>
           </v-flex>
             <v-layout column>
             <v-flex md6>
-                <v-image-input v-model="imageData" :image-quality="0.85" clearable/>
+                <v-image-input v-model="avatar" :image-quality="0.85" clearable/>
             </v-flex>
             </v-layout>
           </v-layout>
@@ -44,9 +44,12 @@
     name: "Reg",
     data() {
       return {
-        name: '',
-        password: '',
-        email: ''
+        credentials {
+          name: '',
+          password: '',
+          email: ''
+        },
+        avatar: null
       }
     },
     components: {
@@ -55,9 +58,8 @@
     methods: {
       submit() {
         this.$store.dispatch('register', {
-          credentials: {
-            this.name, this.password, this.email
-          },
+          credentials,
+          avatar,
           callback: () => {
             this.$router.push('/')
           }

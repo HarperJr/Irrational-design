@@ -19,10 +19,10 @@
               <v-flex>
                 <h2>{{post.artist.email}}</h2>
               </v-flex>
-              <v-btn depressed color="#eff">+Follow</v-btn>
+                <v-btn depressed color="#eff" @click="follow">+Follow</v-btn>
               <v-flex>
-                <v-btn depressed color="#eff">Bookmark</v-btn>
-                <v-btn depressed color="#eff">Like</v-btn>
+                <v-btn depressed color="#eff" @click="bookmark">Bookmark</v-btn>
+                <v-btn depressed color="#eff" @click="like">Like</v-btn>
               </v-flex>
               <h1>{{post.title}}</h1>
               <h2>{{post.subtitle}}</h2>
@@ -46,7 +46,7 @@
 </template>
 
 <script>
-  const axios = require('axios')
+  import {MapActions} from 'vuex'
   import Comment from './Comment.vue'
   import Art from './Art.vue'
 
@@ -61,15 +61,7 @@
       }
     },
     methods: {
-      onFollowBtnClicked: function() {
-        console.log("onFollowBtnClicked")
-      },
-      onFavoriteAddBtnClicked: function() {
-        console.log("onFavoriteAddBtnClicked")
-      },
-      onLikeBtnClicked: function() {
-        console.log("onLikeBtnClicked")
-      }
+      ...MapActions["like, follow, bookmark"]
     },
     created() {
       this.$store.dispatch('get_post', {
