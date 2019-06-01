@@ -27,12 +27,16 @@ export default {
     //Регистрация
     register: (context, payload) => {
       let multipart = new FormData()
-      multipart.append("reg-part", new Blob(JSON.stringify(payload.credentials), {
+      multipart.append("reg-part", new Blob(
+        [JSON.stringify(payload.credentials)], {
         type: "application/json"
       }))
-      multipart.append("avatar", new Blob([payload.avatar], {
-        type: "image/*"
-      }))
+      if (payload.avatar !== null) {
+        multipart.append("avatar", new Blob(
+          [payload.avatar], {
+          type: "image/*"
+        }))
+      }
       http.post('/register', multipart)
       .then(res => {
         payload.callback(res)
