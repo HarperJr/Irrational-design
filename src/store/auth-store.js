@@ -7,7 +7,11 @@ export default {
   },
   mutations: {
     set_token: (state, payload) => {
-      localStorage.token = payload
+      if (payload === undefined) {
+        localStorage.removeItem('token')
+      } else {
+        localStorage.token = payload
+      }
     }
   },
   actions: {
@@ -34,6 +38,9 @@ export default {
         payload.callback(res)
       })
       .catch(ex => console.log(ex))
+    },
+    logout({commit}) {
+      commit('set_token', undefined)
     }
   }
 }
