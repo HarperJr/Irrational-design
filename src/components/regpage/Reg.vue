@@ -12,10 +12,10 @@
                 <v-text-field v-model="name" label="Name" single-line required solo></v-text-field>
               </v-flex>
               <v-flex xs12 sm6>
-                <v-text-field v-model="pass" required label="Password" type="password" single-line solo></v-text-field>
+                <v-text-field v-model="password" required label="Password" type="password" single-line solo></v-text-field>
               </v-flex>
               <v-flex xs12 sm6>
-                <v-text-field v-model="pass" required label="Password" type="password" single-line solo></v-text-field>
+                <v-text-field v-model="password" required label="Password" type="password" single-line solo></v-text-field>
               </v-flex>
               <v-flex xs12 sm6>
                 <v-text-field v-model="email" label="E-mail" single-line required solo></v-text-field>
@@ -45,7 +45,7 @@
     data() {
       return {
         name: '',
-        pass: '',
+        password: '',
         email: ''
       }
     },
@@ -56,7 +56,7 @@
       submit() {
         this.$store.dispatch('register', {
           credentials: {
-            this.name, this.pass, this.email
+            this.name, this.password, this.email
           },
           callback: () => {
             this.$router.push('/')
