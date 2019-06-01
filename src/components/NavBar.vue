@@ -22,7 +22,7 @@
             <v-btn flat class="btn-settings">
               Settings
             </v-btn>
-            <v-btn flat class="btn-settings">
+            <v-btn flat class="btn-settings"  @click="logout()">
               Log Out
             </v-btn>
 
@@ -50,6 +50,11 @@
         authorized: this.$store.getters.authorized
       }
     },
+    methods: {
+      logout() {
+        this.$store.dispatch('logout')
+      }
+    },
     computed: {
       credentials: function() {
         return this.$store.getters.credentials
@@ -69,7 +74,7 @@
       this.$store.subscribe((mutation, state) => {
         switch(mutation.type) {
           case 'set_token': {
-            this.authorized = state !== undefined
+            this.authorized = localStorage.token !== undefined
           }
         }
       })

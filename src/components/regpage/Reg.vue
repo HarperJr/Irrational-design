@@ -44,7 +44,7 @@
     name: "Reg",
     data() {
       return {
-        credentials {
+        credentials: {
           name: '',
           password: '',
           email: ''
