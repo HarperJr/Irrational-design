@@ -46,7 +46,7 @@
 </template>
 
 <script>
-  import {MapActions} from 'vuex'
+  import {mapActions} from 'vuex'
   import Comment from './Comment.vue'
   import Art from './Art.vue'
 
@@ -61,7 +61,7 @@
       }
     },
     methods: {
-      ...MapActions["like, follow, bookmark"]
+      ...mapActions(['like', 'bookmark', 'follow'])
     },
     created() {
       this.$store.dispatch('get_post', {
