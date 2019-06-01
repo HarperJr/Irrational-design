@@ -29,7 +29,7 @@
             </v-layout>
           </v-layout>
           <v-card-actions>
-            <v-btn flat class="form-register-bnt" @onclick="submit">Зарегистрироваться</v-btn>
+            <v-btn flat class="form-register-bnt" @click="submit()">Зарегистрироваться</v-btn>
           </v-card-actions>
         </v-form>
       </v-card>
@@ -58,8 +58,8 @@
     methods: {
       submit() {
         this.$store.dispatch('register', {
-          credentials,
-          avatar,
+          credentials: this.credentials,
+          avatar: this.avatar,
           callback: () => {
             this.$router.push('/')
           }
