@@ -47,5 +47,16 @@ export default {
       })
       .catch(ex => console.log(ex))
     },
+    like: (context, payload) => {
+      http.post(`post/${payload.postId}/like`, {
+        params: {
+          initial: payload.initial
+        }
+      })
+      .then(res => {
+
+      })
+      .catch(ex => console.log(ex))
+    }
   }
 }
