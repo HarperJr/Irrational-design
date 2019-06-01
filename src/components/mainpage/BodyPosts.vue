@@ -1,7 +1,7 @@
 <template>
 
   <v-container>
-    <v-layout align-center justify-center row wrap>
+    <v-layout align-center row wrap>
       <PreviewPost v-for="post in feed" :key="post.id" :post="post"></PreviewPost>
     </v-layout>
   </v-container>
