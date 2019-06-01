@@ -2,13 +2,13 @@
   <v-toolbar>
     <v-toolbar-title class="nav-logo">IrrationalDesign</v-toolbar-title>
     <v-toolbar-items class="hidden-sm-and-down">
-      <v-btn flat>Главное</v-btn>
+      <v-btn flat v-on:click="navigateTo('feed')">Главная</v-btn>
       <v-btn flat>Новости</v-btn>
       <v-btn flat>О нас</v-btn>
     </v-toolbar-items>
     <v-spacer></v-spacer>
     <v-toolbar-items>
-      <v-flex v-if="credentials !== undefined">
+      <v-flex v-if="credentials !== null">
         <!--Show component-->
         <div class="btn-nickname">
           <v-btn flat class="btn-options">
@@ -46,14 +46,15 @@
         </v-flex>
       </v-flex>
       <v-flex v-else>
-        <v-btn flat>Войти</v-btn>
-        <v-btn flat>Зарегистрироваться</v-btn>
+        <v-btn flat v-on:click="navigateTo('auth')">Войти</v-btn>
+        <v-btn flat v-on:click="navigateTo('reg')">Зарегистрироваться</v-btn>
       </v-flex>
     </v-toolbar-items>
   </v-toolbar>
 </template>
 
 <script>
+
   export default {
     name: 'Navbar',
     mounted() {
@@ -61,7 +62,13 @@
     },
     computed: {
       credentials: function() {
+        console.log(this.$store.getters.credentials);
         return this.$store.getters.credentials
+      }
+    },
+    methods:{
+      navigateTo(where, id, item){
+        this.$router.push({name: where, params: {id}, query: item});
       }
     }
   }
