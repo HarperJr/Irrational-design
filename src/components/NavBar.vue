@@ -50,11 +50,7 @@
         authorized: this.$store.getters.authorized
       }
     },
-    methods: {
-      logout() {
-        this.$store.dispatch('logout')
-      }
-    },
+
     computed: {
       credentials: function() {
         return this.$store.getters.credentials
@@ -63,6 +59,9 @@
     methods:{
       navigateTo(where, id, item){
         this.$router.push({name: where, params: {id}, query: item});
+      },
+      logout() {
+        this.$store.dispatch('logout')
       }
     },
     watch: {
