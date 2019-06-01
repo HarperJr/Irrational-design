@@ -136,6 +136,7 @@
                               :image-quality="0.85"
                               type="file"
                               clearable
+                              imageQuality
                       />
                     </v-flex>
                   </v-layout>
