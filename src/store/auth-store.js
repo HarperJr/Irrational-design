@@ -32,10 +32,7 @@ export default {
         type: "application/json"
       }))
       if (payload.avatar !== null) {
-        multipart.append("avatar", new Blob(
-          [payload.avatar], {
-          type: "image/*"
-        }))
+        multipart.append("avatar", payload.avatar)
       }
       http.post('/register', multipart)
       .then(res => {

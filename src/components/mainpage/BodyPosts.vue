@@ -1,7 +1,7 @@
 <template>
 
   <v-container>
-    <v-layout align-center justify-center row wrap>
+    <v-layout align-center row wrap>
       <PreviewPost v-for="post in feed" :key="post.id" :post="post"></PreviewPost>
     </v-layout>
   </v-container>
@@ -22,7 +22,9 @@
     },
     created() {
       this.$store.dispatch('get_feed', {
-        filter: 'all'
+        filter: 'all',
+        from: 0,
+        to: 100
       })
     },
     computed: {

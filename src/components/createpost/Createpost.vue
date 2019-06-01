@@ -130,12 +130,29 @@
                 <v-flex md6>
                   <v-layout column>
                     <v-flex md12>
-                      <v-image-input
+                      <!--v-image-input
                               v-model="postPayload.arts[0]"
                               :image-quality="0.85"
                               type="file"
                               clearable
-                      />
+                              imageHeight="600"
+                              imageWidth="800"
+                      /-->
+                      <VPictureInput
+                              ref="pictureInput"
+                              @change="onChanged"
+                              @remove="onRemoved"
+                              :width="500"
+                              :removable="true"
+                              removeButtonClass="ui red button"
+                              :height="500"
+                              accept="image/jpeg, image/png, image/gif"
+                              buttonClass="ui button primary"
+                              :customStrings="{
+                              upload: '<h1>Upload it!</h1>',
+                              drag: 'Drag and drop your image here'}">
+
+                      </VPictureInput>
                     </v-flex>
                   </v-layout>
                 </v-flex>
@@ -162,8 +179,7 @@
 
 
 <script>
-  import VImageInput from 'vuetify-image-input';
-
+  import VPictureInput from 'vue-picture-input'
   export default {
     data () {
       return {
@@ -218,7 +234,7 @@
       }
     },
     components: {
-      [VImageInput.name]: VImageInput,
+      VPictureInput,
     },
     name: "Createpost",
     watch: {
@@ -254,8 +270,16 @@
         this.editing = null
         this.index = -1
       }
-
     },
+      onChanged() {
+        console.log("New picture loaded");
+        if (this.$refs.pictureInput.file) {
+          this.postPayload.arts[0] = this.$refs.pictureInput.file;
+        }
+      },
+      onRemoved() {
+        this.image = '';
+      },
     filter (item, queryText, itemText) {
       if (item.header) return false
 
@@ -269,9 +293,6 @@
           .indexOf(query.toString().toLowerCase()) > -1
     },
     checkForm: function (e) {
-      if (this.name && this.age) {
-        return true;
-      }
 
       this.errors = [];
 
@@ -293,10 +314,12 @@
       if(this.errors.length == 0) {
         this.uploadData();
       }
+
+      console.log(this.postPayload.arts);
       e.preventDefault();
     },
     uploadData(){
-
+      console.log(this.postPayload.arts[0]);
       this.postPayload.post.tags = Array.from(this.model, x => x.text);
       //console.log(this.postPayload);
       this.$store.dispatch('upload_post', this.postPayload);
