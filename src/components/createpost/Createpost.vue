@@ -1,7 +1,6 @@
 <template>
       <v-container>
-        <v-form
-        >
+        <v-form>
         <v-card class="create-post">
           <v-card-title>
             <h3 class="headline mb-0">Добавить пост</h3>
