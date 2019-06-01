@@ -27,11 +27,7 @@ export default {
         })
       )
       payload.arts.forEach((art, i, arr) => {
-        multipart.append(`image_${i}`,
-          new Blob([art], {
-            type: 'image/*'
-          })
-        )
+        multipart.append(`image_${i}`, art)
       })
       http.post('/upload', multipart)
       .then(res => {
@@ -47,7 +43,7 @@ export default {
       })
       .catch(ex => console.log(ex))
     },
-    like: (context, payload) => {
+    like: (c) => {
       http.post(`post/${payload.postId}/like`, {
         params: {
           initial: payload.initial

@@ -179,8 +179,7 @@
 
 
 <script>
-  import VImageInput from 'vuetify-image-input';
-  import VPictureInput from 'vue-picture-input';
+  import VPictureInput from 'vue-picture-input'
   export default {
     data () {
       return {
@@ -235,7 +234,6 @@
       }
     },
     components: {
-      [VImageInput.name]: VImageInput,
       VPictureInput,
     },
     name: "Createpost",
@@ -277,26 +275,10 @@
         console.log("New picture loaded");
         if (this.$refs.pictureInput.file) {
           this.postPayload.arts[0] = this.$refs.pictureInput.file;
-        } else {
-          console.log("Old browser. No support for Filereader API");
         }
       },
       onRemoved() {
         this.image = '';
-      },
-      attemptUpload() {
-        if (this.image){
-          FormDataPost('http://localhost:8001/user/picture', this.image)
-              .then(response=>{
-                if (response.data.success){
-                  this.image = '';
-                  console.log("Image uploaded successfully ✨");
-                }
-              })
-              .catch(err=>{
-                console.error(err);
-              });
-        }
       },
     filter (item, queryText, itemText) {
       if (item.header) return false
