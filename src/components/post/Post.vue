@@ -4,11 +4,11 @@
 
       <v-flex xs12 md5 class="post-card">
         <v-card >
-          <v-container>
-            <v-layout column>
+
+            <v-layout column class="post-card-text">
               <v-flex>
                 <v-flex>
-                  <v-avatar size="82px">
+                  <v-avatar size="100px" style="margin-bottom: 7px">
                     <!--img :src="post.artist.avatar.link" :alt="post.artist.avatar.name"-->
                   </v-avatar>
                 </v-flex>
@@ -20,11 +20,11 @@
                 <h2>{{post.artist.email}}</h2>
               </v-flex>
 
-              <v-flex>
+              <v-card-actions>
                 <v-btn depressed class="post-btn post-btn-follow" @click="follow">+Follow</v-btn>
                 <!--v-btn depressed class="post-btn post-btn-likes" @click="bookmark">Bookmark</v-btn-->
                 <v-btn depressed class="post-btn post-btn-likes" @click="like">Like</v-btn>
-              </v-flex>
+              </v-card-actions>
               <h1>{{post.title}}</h1>
               <h2>{{post.subtitle}}</h2>
               <p>{{post.description}}</p>
@@ -32,7 +32,7 @@
                 <Comment v-for="comment in comments" :key="comment.id" :comment="comment"></Comment>
               </v-layout>
             </v-layout>
-          </v-container>
+
         </v-card>
       </v-flex>
 

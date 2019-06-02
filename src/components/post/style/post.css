@@ -6,17 +6,28 @@
 
 .post-card{
   height: 400px;
-    width: 100%;
-    padding-right: 20px;
+  width: 100%;
+  padding-right: 20px;
+  margin-right: 19px;
 }
 
+.v-card__actions{
+  margin-bottom: 13px;
+  margin-top: 13px;
+  padding: 0px;
+}
 
 .v-card.v-sheet.theme--light{
-  width: 100%;
+  width: 430px;
+  padding: 31px 21px;
+}
+
+.v-card>:last-child:not(.v-btn):not(.v-chip).post-card-text{
+  margin: 1px 32px !important;
 }
 
 .container{
-  width: 100%;
+  width: 1580px;
 }
 
 .post-btn {
