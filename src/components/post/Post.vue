@@ -9,11 +9,11 @@
               <v-flex>
                 <v-flex>
                   <v-avatar size="100px" style="margin-bottom: 7px">
-                    <!--img :src="post.artist.avatar.link" :alt="post.artist.avatar.name"-->
+                    <img :src="server+'/avatars/'+post.artist.avatar.link" >
                   </v-avatar>
                 </v-flex>
                 <v-flex align-center offset-xs1>
-                  <!--strong><a class="permalink" :href="post.artist.permalink">{{post.artist.name}}</a></strong-->
+                  <strong><a class="permalink" :href="'/#/profile/'+post.artist.id">{{post.artist.name}}</a></strong>
                 </v-flex>
               </v-flex>
               <v-flex>
@@ -72,7 +72,8 @@
         comments: {
           type: Object,
           required: true
-        }
+        },
+        server: `${API_BASE_URL}`,
       }
     },
     methods: {
@@ -84,7 +85,7 @@
       })
     },
     computed: {
-      post: function() {
+      post: function () {
         return this.$store.getters.post;
       }
     },

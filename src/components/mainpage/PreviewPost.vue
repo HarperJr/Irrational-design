@@ -14,7 +14,7 @@
           <v-layout  class="info1" justify-space-around>
             <v-flex class="pre-post__autor-img">
               <router-link :to="{name:'profile', params: { id: post.artist.id }} ">
-                <img class="avatar" :src="post.artist.avatar" :alt="post.artist.name">
+                <img class="avatar" :src="previewAvatar">
               </router-link>
             </v-flex>
             <v-flex class="pre-post__autor-name">
@@ -62,12 +62,16 @@
     props: {
       post: {
         required: true
-      }
+      },
+      server: `${API_BASE_URL}`,
     },
     computed: {
       previewUrl: function () {
         return `${API_BASE_URL}/arts/${this.post.preview}`
       },
+      previewAvatar: function () {
+        return `${API_BASE_URL}/avatars/${this.post.artist.avatar.link}`
+      }
     },
     methods: {
       navigateTo(where, id, item){
