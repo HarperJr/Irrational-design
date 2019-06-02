@@ -22,6 +22,9 @@
 
               <v-card-actions class="post-actions">
                 <v-btn depressed class="post-btn post-btn-follow" @click="follow">+Follow</v-btn>
+                <!--div>кнопка должна быть активна, если пользователь уже подписался</div-->
+                <!--v-btn depressed class="post-btn post-btn-follwed" @click="follow">Followed</v-btn-->
+                <!--div>эту кнопку пока опустим<div-->
                 <!--v-btn depressed class="post-btn post-btn-likes" @click="bookmark">Bookmark</v-btn-->
                 <v-btn depressed class="post-btn post-btn-likes" @click="like">Like</v-btn>
               </v-card-actions>
