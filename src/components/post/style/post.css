@@ -6,11 +6,17 @@
 
 .post-card{
   height: 400px;
-  width: 350px !important;
+    width: 100%;
+    padding-right: 20px;
 }
 
-.post-card v-card v-sheet theme--light{
-  width: 350px;
+
+.v-card.v-sheet.theme--light{
+  width: 100%;
+}
+
+.container{
+  width: 100%;
 }
 
 .post-btn {
@@ -24,10 +30,12 @@
   flex-direction: row;
 }
 
-.v-card__text.post-btn-likes{
-  background-color: #2BD8A7;
+.post-btn.post-btn-likes.v-btn{
+  background-color: #2BD8A7 !important;
+  color: #ffffff !important;
 }
 
-.post-btn-follow v-btn v-btn--depressed theme--light {
-  background-color: #4ABDDB;
+.post-btn.post-btn-follow.v-btn {
+  background-color: #4ABDDB !important;
+  color: #ffffff !important;
 }

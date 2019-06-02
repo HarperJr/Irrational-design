@@ -20,10 +20,10 @@
                 <h2>{{post.artist.email}}</h2>
               </v-flex>
 
-              <v-flex class="post-btn">
-                <v-btn depressed class="post-btn-follow" @click="follow">+Follow</v-btn>
-                <!--v-btn depressed class="post-btn-likes" @click="bookmark">Bookmark</v-btn-->
-                <v-btn depressed @click="like">Like</v-btn>
+              <v-flex>
+                <v-btn depressed class="post-btn post-btn-follow" @click="follow">+Follow</v-btn>
+                <!--v-btn depressed class="post-btn post-btn-likes" @click="bookmark">Bookmark</v-btn-->
+                <v-btn depressed class="post-btn post-btn-likes" @click="like">Like</v-btn>
               </v-flex>
               <h1>{{post.title}}</h1>
               <h2>{{post.subtitle}}</h2>
