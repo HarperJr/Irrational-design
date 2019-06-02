@@ -59,3 +59,22 @@
   background-color: #C1C1C1 !important;
   color: #ffffff !important;
 }
+.post-btn.post-btn-delete.v-btn{
+  background-color: #ED0008 !important;
+  color: #ffffff !important;
+}
+
+.post-btn.post-btn-report.v-btn{
+  background-color: #4B4646 !important;
+  color: #ffffff !important;
+}
+
+.post-btn.post-btn-block.v-btn{
+  background-color: #4B4646 !important;
+  color: #ffffff !important;
+}
+
+.post-btn.post-btn-unblock.v-btn{
+  color: #4B4646 !important;
+  background-color: #D8D8D8 !important;
+}
