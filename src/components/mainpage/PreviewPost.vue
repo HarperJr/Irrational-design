@@ -70,7 +70,10 @@
         return `${API_BASE_URL}/arts/${this.post.preview}`
       },
       previewAvatar: function () {
-        return `${API_BASE_URL}/avatars/${this.post.artist.avatar.link}`
+        if(this.post.artist.avatar){
+          return `${API_BASE_URL}/avatars/${this.post.artist.avatar.link}`
+        }
+        else {return null}
       }
     },
     methods: {
