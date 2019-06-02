@@ -3,7 +3,7 @@
     <v-layout align-start>
 
       <v-flex xs12 md5 class="post-card">
-        <v-card >
+        <v-card class="v-post-card">
 
             <v-layout column class="post-card-text">
               <v-flex>
@@ -20,7 +20,7 @@
                 <h2>{{post.artist.email}}</h2>
               </v-flex>
 
-              <v-card-actions>
+              <v-card-actions class="post-actions">
                 <v-btn depressed class="post-btn post-btn-follow" @click="follow">+Follow</v-btn>
                 <!--v-btn depressed class="post-btn post-btn-likes" @click="bookmark">Bookmark</v-btn-->
                 <v-btn depressed class="post-btn post-btn-likes" @click="like">Like</v-btn>

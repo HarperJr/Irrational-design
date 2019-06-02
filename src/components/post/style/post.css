@@ -11,7 +11,7 @@
   margin-right: 19px;
 }
 
-.v-card__actions{
+.post-actions.v-card__actions{
   margin-bottom: 13px;
   margin-top: 13px;
   padding: 0px;
@@ -22,7 +22,7 @@
 
 }
 
-.v-card.v-sheet.theme--light{
+.v-post-card.v-post-card.v-card.v-sheet.theme--light{
   width: 430px;
   padding: 31px 21px;
 }
