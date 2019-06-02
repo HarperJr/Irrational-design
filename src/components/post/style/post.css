@@ -17,6 +17,11 @@
   padding: 0px;
 }
 
+.v-card-h{
+  margin-bottom: 8px;
+
+}
+
 .v-card.v-sheet.theme--light{
   width: 430px;
   padding: 31px 21px;

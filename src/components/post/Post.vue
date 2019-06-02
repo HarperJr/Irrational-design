@@ -25,9 +25,11 @@
                 <!--v-btn depressed class="post-btn post-btn-likes" @click="bookmark">Bookmark</v-btn-->
                 <v-btn depressed class="post-btn post-btn-likes" @click="like">Like</v-btn>
               </v-card-actions>
-              <h1>{{post.title}}</h1>
-              <h2>{{post.subtitle}}</h2>
-              <p>{{post.description}}</p>
+
+              <h1 class="v-card-h">{{post.title}}</h1>
+              <h2 class="v-card-h">{{post.subtitle}}</h2>
+              <p class="v-card-h">{{post.description}}</p>
+
               <v-layout column>
                 <Comment v-for="comment in comments" :key="comment.id" :comment="comment"></Comment>
               </v-layout>
