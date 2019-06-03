@@ -1,26 +1,27 @@
 export default {
   state: {
-    authorized: localStorage.token !== undefined
+    token: localStorage.getItem('token')
   },
   getters: {
-    authorized: state => state.authorized
+    authenticated: state => !!state.token
   },
   mutations: {
-    set_token: (state, payload) => {
-      if (payload === undefined) {
+    set_token: (state, token) => {
+      if (token == null) {
         localStorage.removeItem('token')
       } else {
-        localStorage.token = payload
+        localStorage.setItem('token', token)
       }
+      state.token = token
     }
   },
   actions: {
     //Авторизация
-    authorize: (context, payload) => {
+    authorize: ({dispatch, commit}, payload) => {
       http.post('/auth', payload.credentials)
       .then(res => {
-        context.commit('set_token', res.data.jwt_token)
-        payload.callback()
+        commit('set_token', res.data.jwt_token)
+        dispatch('get_credentials')
       })
       .catch(ex => console.log(ex))
     },
@@ -43,8 +44,9 @@ export default {
       })
       .catch(ex => console.log(ex))
     },
-    logout({commit}) {
-      commit('set_token', undefined)
+    logout({dispatch, commit}) {
+      commit('set_token', null)
+      dispatch('get_credentials')
     }
   }
 }

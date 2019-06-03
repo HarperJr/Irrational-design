@@ -47,7 +47,7 @@
         return this.$store.getters.artist;
       },
       avatarUrl() {
-        if (this.artist.avatar.link) {
+        if (this.artist) {
           return `${API_BASE_URL}/avatars/${this.artist.avatar.link}`
         }
         else {return null}

@@ -62,16 +62,15 @@
     props: {
       post: {
         required: true
-      },
-      server: `${API_BASE_URL}`,
+      }
     },
     computed: {
       previewUrl: function () {
-        return `${API_BASE_URL}/arts/${this.post.preview}`
+        return `${API_BASE_URL}arts/${this.post.preview}`
       },
       previewAvatar: function () {
         if(this.post.artist.avatar){
-          return `${API_BASE_URL}/avatars/${this.post.artist.avatar.link}`
+          return `${API_BASE_URL}avatars/${this.post.artist.avatar.link}`
         }
         else {return null}
       }

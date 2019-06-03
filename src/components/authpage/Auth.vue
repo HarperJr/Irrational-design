@@ -48,10 +48,7 @@
     methods: {
       submit() {
         this.$store.dispatch('authorize', {
-          credentials: this.authCredentials,
-          callback: () => {
-            this.$router.push('/')
-          }
+          credentials: this.authCredentials
         })
       }
     }

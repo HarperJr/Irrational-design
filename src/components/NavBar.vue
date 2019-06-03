@@ -9,11 +9,11 @@
     <v-spacer></v-spacer>
     <v-toolbar-items>
       <!--v-flex v-if="credentials !== null"-->
-      <v-flex v-if="authorized">
+      <v-flex v-if="credentials">
         <!--Show component-->
         <div class="btn-nickname">
           <v-btn flat class="btn-options">
-            Nickname
+            {{credentials.name}}
           </v-btn>
           <div class="nickname__dropdown">
             <v-btn flat class="btn-settings">
@@ -22,15 +22,14 @@
             <v-btn flat class="btn-settings">
               Settings
             </v-btn>
-            <v-btn flat class="btn-settings"  @click="logout()">
+            <v-btn flat class="btn-settings" @click="logout()">
               Log Out
             </v-btn>
-
           </div>
         </div>
         <v-flex xs12 sm6 md8 align-center justify-center layout text-xs-center>
           <v-avatar :tile="tile" :size="avatarSize" color="grey lighten-4">
-            <img src="https://vuetifyjs.com/apple-touch-icon-180x180.png" alt="avatar">
+            <img :src="avatarUrl" alt="avatar">
           </v-avatar>
         </v-flex>
       </v-flex>
@@ -46,37 +45,34 @@
   export default {
     name: 'Navbar',
     data() {
-      return {
-        authorized: this.$store.getters.authorized
-      }
+      return {}
     },
 
     computed: {
-      credentials: function() {
+      credentials: function () {
         return this.$store.getters.credentials
+      },
+      avatarUrl() {
+        if (this.credentials.avatar.link) {
+          return `${API_BASE_URL}avatars/${this.credentials.avatar.link}`
+        } else {
+          return null
+        }
+      },
+      authenticated() {
+        return this.$store.getters.authenticated
       }
     },
-    methods:{
-      navigateTo(where, id, item){
+    methods: {
+      navigateTo(where, id, item) {
         this.$router.push({name: where, params: {id}, query: item});
       },
       logout() {
         this.$store.dispatch('logout')
       }
     },
-    watch: {
-      authorized(newVal, oldVal) {
-        if (newVal !== oldVal) this.$store.dispatch('get_credentials')
-      }
-    },
     mounted() {
-      this.$store.subscribe((mutation, state) => {
-        switch(mutation.type) {
-          case 'set_token': {
-            this.authorized = localStorage.token !== undefined
-          }
-        }
-      })
+      this.$store.dispatch('get_credentials')
     }
   }
 </script>

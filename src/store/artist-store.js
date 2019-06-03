@@ -16,10 +16,11 @@ export default {
   },
   actions: {
     //Запрос к личным данным
-    get_credentials: (context, payload) => {
+    get_credentials: ({commit}) => {
       http.get('/credentials')
       .then(res => {
-        context.commit('set_credentials', res.data)
+        let data = res.data
+        commit('set_credentials', data)
       })
       .catch(ex => console.log(ex))
     },

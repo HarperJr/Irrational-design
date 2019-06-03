@@ -88,8 +88,8 @@
         return this.$store.getters.post;
       },
       avatarUrl() {
-        if (this.post.artist.avatar) {
-          return `${API_BASE_URL}/avatars/${this.post.artist.avatar}`
+        if (this.post) {
+          return `${API_BASE_URL}avatars/${this.post.artist.avatar.link}`
         }
         else {return null}
       }
