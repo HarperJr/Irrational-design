@@ -9,7 +9,7 @@
                 color="grey lighten-4"
         >
           <v-img
-                  :src="artist.avatar.link"
+                  :src="avatarUrl"
           ></v-img>
         </v-avatar>
       </v-flex>
@@ -39,13 +39,18 @@
     created() {
       console.log(this.$route.params.id);
       this.$store.dispatch('get_artist', {
-
-        atistId: this.$route.params.id
+        artistId: this.$route.params.id
       })
     },
     computed: {
       artist: function() {
         return this.$store.getters.artist;
+      },
+      avatarUrl() {
+        if (this.artist.avatar.link) {
+          return `${API_BASE_URL}/avatars/${this.artist.avatar.link}`
+        }
+        else {return null}
       }
     },
     //created() {

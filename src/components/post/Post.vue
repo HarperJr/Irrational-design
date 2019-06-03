@@ -9,7 +9,7 @@
               <v-flex>
                 <v-flex>
                   <v-avatar size="100px" style="margin-bottom: 7px">
-                    <img :src="server+'/avatars/'+post.artist.avatar.link" >
+                    <img :src="avatarUrl" >
                   </v-avatar>
                 </v-flex>
                 <v-flex align-center offset-xs1>
@@ -72,8 +72,7 @@
         comments: {
           type: Object,
           required: true
-        },
-        server: `${API_BASE_URL}`,
+        }
       }
     },
     methods: {
@@ -87,6 +86,12 @@
     computed: {
       post: function () {
         return this.$store.getters.post;
+      },
+      avatarUrl() {
+        if (this.post.artist.avatar) {
+          return `${API_BASE_URL}/avatars/${this.post.artist.avatar}`
+        }
+        else {return null}
       }
     },
     components: {
