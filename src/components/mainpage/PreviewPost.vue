@@ -79,7 +79,7 @@
     methods: {
       navigateTo(where, id, item){
         this.$router.push({name: where, params: {id}, query: item});
-      },
+      }
 
     }
   }

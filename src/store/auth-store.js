@@ -25,18 +25,21 @@ export default {
       .catch(ex => console.log(ex))
     },
     //Регистрация
-    register: (context, payload) => {
+    register({commit}, {credentials, avatar}) {
       let multipart = new FormData()
       multipart.append("reg-part", new Blob(
-        [JSON.stringify(payload.credentials)], {
+        [JSON.stringify(credentials)], {
         type: "application/json"
       }))
-      if (payload.avatar !== null) {
-        multipart.append("avatar", payload.avatar)
+      if (avatar) {
+        multipart.append("avatar", new Blob(
+            [avatar], {
+              type: "image/*"
+            }))
       }
       http.post('/register', multipart)
       .then(res => {
-        payload.callback(res)
+
       })
       .catch(ex => console.log(ex))
     },

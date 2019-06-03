@@ -9,16 +9,16 @@
             <v-flex md6>
             <div class="reg-form-align">
               <v-flex xs12 sm6>
-                <v-text-field v-model="credentials.name" label="Name" single-line required solo></v-text-field>
+                <v-text-field v-model="regCredentials.name" label="Name" single-line required solo></v-text-field>
               </v-flex>
               <v-flex xs12 sm6>
-                <v-text-field v-model="credentials.password" required label="Password" type="password" single-line solo></v-text-field>
+                <v-text-field v-model="regCredentials.password" required label="Password" type="password" single-line solo></v-text-field>
               </v-flex>
               <v-flex xs12 sm6>
-                <v-text-field v-model="credentials.password" required label="Password" type="password" single-line solo></v-text-field>
+                <v-text-field v-model="regCredentials.password" required label="Password" type="password" single-line solo></v-text-field>
               </v-flex>
               <v-flex xs12 sm6>
-                <v-text-field v-model="credentials.email" label="E-mail" single-line required solo></v-text-field>
+                <v-text-field v-model="regCredentials.email" label="E-mail" single-line required solo></v-text-field>
               </v-flex>
             </div>
           </v-flex>
@@ -38,13 +38,13 @@
 </template>
 
 <script>
-  import VImageInput from 'vuetify-image-input';
+  import VImageInput from 'vuetify-image-input'
 
   export default {
     name: "Reg",
     data() {
       return {
-        credentials: {
+        regCredentials: {
           name: '',
           password: '',
           email: ''
@@ -58,11 +58,8 @@
     methods: {
       submit() {
         this.$store.dispatch('register', {
-          credentials: this.credentials,
-          avatar: this.avatar,
-          callback: () => {
-            this.$router.push('/')
-          }
+          credentials: this.regCredentials,
+          avatar: this.avatar
         })
       }
     }
