@@ -5,7 +5,7 @@
 }
 
 .post-card{
-  height: 400px;
+  height: 560px;
   width: 100%;
   padding-right: 20px;
   margin-right: 19px;
@@ -21,6 +21,12 @@
   margin-bottom: 8px;
 
 }
+
+.v-card-h .v-card-tarea{
+  margin-top: 20px;
+
+}
+
 
 .v-post-card.v-post-card.v-card.v-sheet.theme--light{
   width: 430px;

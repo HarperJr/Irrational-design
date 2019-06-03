@@ -30,17 +30,25 @@
 
               <h1 class="v-card-h">{{post.title}}</h1>
               <h2 class="v-card-h">{{post.subtitle}}</h2>
-              <p class="v-card-h">{{post.description}}</p>
+              <p class="v-card-h v-card-tarea">{{post.description}}</p>
+              <v-textarea class="v-card-h"
+                      v-model="comment"
+                      required
+                      label="Добавить комментарий"
+                      single-line
+
+                      solo></v-textarea>
 
               <v-card-actions class="post-actions">
 
                 <v-btn v-if="isAuthor" depressed class="post-btn post-btn-delete" @click="remove">Удалить</v-btn>
-                <v-btn v-else depressed class="post-btn post-btn-report" @click="report">Пожаловаться</v-btn>
+                <!--v-btn v-else depressed class="post-btn post-btn-report" @click="report">Пожаловаться</v-btn-->
+                <!--v-btn v-else depressed class="post-btn post-btn-report" @click="report">Вы пожаловались</v-btn-->
               </v-card-actions>
-              <v-card-actions class="post-actions">
+              <!--v-card-actions class="post-actions">
                 <v-btn depressed class="post-btn post-btn-block" @click="block">Блокировать</v-btn>
                 <v-btn depressed class="post-btn post-btn-unblock" @click="unblock">Разблокировать</v-btn>
-              </v-card-actions>
+              </v-card-actions-->
 
               <v-layout column>
                 <Comment v-for="comment in comments" :key="comment.id" :comment="comment"></Comment>

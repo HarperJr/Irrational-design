@@ -6,6 +6,7 @@
       </v-avatar>
       <p class="comment-title">{{comment.author.name}}</p>
     </v-flex>
+
     <v-flex>
       <p>{{comment.content}}</p>
     </v-flex>
