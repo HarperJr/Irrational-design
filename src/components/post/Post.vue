@@ -69,7 +69,6 @@
 </template>
 
 <script>
-  import {mapActions, mapGetters} from 'vuex'
   import Comment from './Comment.vue'
   import Art from './Art.vue'
 
@@ -77,37 +76,32 @@
     name: 'Post',
     data() {
       return {
+        post: null,
         comments: {
           type: Object,
           required: true
         }
       }
     },
-    methods: {
-      ...mapActions(['like', 'bookmark', 'follow', 'remove', 'block', 'unblock','report'])
-    },
-    created() {
-      this.$store.dispatch('get_post', {
-        postId: this.$route.params.id
-      })
-    },
     computed: {
-      ...mapGetters(['post']),
       avatarUrl() {
-        if (this.post.artist.avatar) {
-          return `${API_BASE_URL}avatars/${this.post.artist.avatar.link}`
-        }
-        else {return null}
-      },
-      isAuthor(){
-        let credentials = this.$store.getters.credentials
         if (this.post) {
-          return this.post.artist.id === credentials.id
-        } else return false
+          let avatar = this.post.artist.avatar
+          if (avatar) {
+            return `${API_BASE_URL}avatars/${avatar.link}`
+          } else return ''
+        }
       }
     },
     components: {
       Comment, Art
+    },
+    mounted() {
+      http.get(`post/${this.$route.params.id}`)
+          .then(res => {
+            this.post = res.data
+          })
+          .catch(ex => console.log(ex))
     }
   }
 </script>
