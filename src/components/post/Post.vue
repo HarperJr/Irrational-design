@@ -1,7 +1,6 @@
 <template>
   <v-container fluid>
     <v-layout align-start>
-{{isAuthor}}
       <v-flex xs12 md5 class="post-card">
         <v-card class="v-post-card">
 
@@ -34,8 +33,9 @@
               <p class="v-card-h">{{post.description}}</p>
 
               <v-card-actions class="post-actions">
-                <v-btn depressed class="post-btn post-btn-delete" @click="remove">Удалить</v-btn>
-                <v-btn depressed class="post-btn post-btn-report" @click="report">Пожаловаться</v-btn>
+
+                <v-btn v-if="isAuthor" depressed class="post-btn post-btn-delete" @click="remove">Удалить</v-btn>
+                <v-btn v-else depressed class="post-btn post-btn-report" @click="report">Пожаловаться</v-btn>
               </v-card-actions>
               <v-card-actions class="post-actions">
                 <v-btn depressed class="post-btn post-btn-block" @click="block">Блокировать</v-btn>
