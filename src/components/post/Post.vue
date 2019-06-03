@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     <v-layout align-start>
-
+{{isAuthor}}
       <v-flex xs12 md5 class="post-card">
         <v-card class="v-post-card">
 
@@ -61,7 +61,7 @@
 </template>
 
 <script>
-  import {mapActions} from 'vuex'
+  import {mapActions, mapGetters} from 'vuex'
   import Comment from './Comment.vue'
   import Art from './Art.vue'
 
@@ -84,14 +84,18 @@
       })
     },
     computed: {
-      post: function () {
-        return this.$store.getters.post;
-      },
+      ...mapGetters(['post']),
       avatarUrl() {
-        if (this.post) {
+        if (this.post.artist.avatar) {
           return `${API_BASE_URL}avatars/${this.post.artist.avatar.link}`
         }
         else {return null}
+      },
+      isAuthor(){
+        let credentials = this.$store.getters.credentials
+        if (this.post) {
+          return this.post.artist.id === credentials.id
+        } else return false
       }
     },
     components: {
