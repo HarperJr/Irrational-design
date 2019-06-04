@@ -42,8 +42,8 @@
       </v-card-actions>
       <hr style="margin-bottom: 5px;" color="#D7D7D7"/>
       <v-card-actions>
-        <v-btn depressed class="pre-post-btn-like">+Нравится</v-btn>
-        <v-btn depressed class="pre-post-btn-follow">+Подписаться</v-btn>
+        <v-btn depressed class="pre-post-btn-like">+ Нравится</v-btn>
+        <v-btn depressed class="pre-post-btn-follow">+ Подписаться</v-btn>
       </v-card-actions>
       <v-card-actions class="pre-post__bottom-info">
         <v-card-text class="pre-post__info-likes">нравится: {{post.likes}}</v-card-text>

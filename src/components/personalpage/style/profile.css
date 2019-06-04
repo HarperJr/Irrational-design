@@ -2,6 +2,85 @@
   justify-content: center;
 }
 
-.profile__raspolozheniye{
+.profile__card{
   flex-direction: column;
+}
+
+.profile__header {
+  width: 100%;
+  padding: 50px;
+  display: flex;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  color: #fff !important;
+}
+.profile__avatar{
+  margin-right: 50px;
+}
+.profile__header > * {
+
+  z-index: 2;
+}
+.profile__background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.1);
+  z-index: 1;
+  opacity: .9;
+  filter: blur(5px);
+}
+.profile__background:after {
+  content: '';
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 100);
+  background: -webkit-linear-gradient(0deg, rgba(0, 0, 0, 100) 0%, rgba(0, 0, 0, 0) 100%);
+  background: -o-linear-gradient(0deg, rgba(0, 0, 0, 100) 0%, rgba(0, 0, 0, 0) 100%);
+  background: -ms-linear-gradient(0deg, rgba(0, 0, 0, 100) 0%, rgba(0, 0, 0, 0) 100%);
+  background: linear-gradient(0deg, rgba(0, 0, 0, 100) 0%, rgba(0, 0, 0, 0) 100%);
+}
+.profile__card {
+  justify-content: flex-end;
+}
+.profile__card h1 {
+  font-size: 40px;
+}
+.profile__avatar .v-image {
+  border: 4px solid #fff;
+}
+.profile__email {
+  font-size: 20px;
+}
+.profile__email span {
+  padding-right: 20px;
+  color: #ccc;
+}
+.profile__email a {
+  color: #fff;
+}
+.profile__stats {
+  align-items: flex-end;
+}
+.profile__stats .v-card__text {
+  font-size: 16px;
+  flex-direction: column;
+  color: #ccc;
+}
+.profile__stats .v-card__text span {
+  font-size: 20px;
+  line-height: 35px;
+  color: #fff;
+}
+.profile__stats img {
+  width: 30px;
+  heigth: 30px;
+}
+.profile__stats > .flex {
+  align-items: center;
 }

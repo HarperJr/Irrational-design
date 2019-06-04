@@ -1,35 +1,60 @@
 <template>
 
-  <v-container>
-    <v-layout class="profile__raspolozheniye">
-      <v-card style="padding: 50px;">
-        <v-flex class="profile__avatar">
-          <v-avatar
-                  :size="250"
-                  color="grey lighten-4"
-          >
-            <v-img
-                    :src="avatarUrl"
-            ></v-img>
-          </v-avatar>
-        </v-flex>
-        <v-flex class="profile__raspolozheniye">
-          <v-card-text>Nickname: {{artist.name}}</v-card-text>
-          <v-card-text>email: {{artist.email}}</v-card-text>
-          <v-btn v-if="!isAuthor && !artist.followed" depressed class="post-btn post-btn-follow" @click="follow">
-            +Подписаться
-          </v-btn>
-          <v-btn v-else-if="!isAuthor" depressed class="post-btn post-btn-followed" @click="follow">-Отписаться</v-btn>
-          <v-btn v-if="!isAuthor" depressed class="post-btn post-btn-likes" v-on:click="navigateTo('donate')">Отправить пожертвование </v-btn>
-          <v-card-text>Подписчиков: {{artist.followers}}</v-card-text>
-          <v-card-text>Подписок: {{artist.follows}}</v-card-text>
-          <v-card-text v-if="isAuthor">{{"55 556"}}</v-card-text>
-        </v-flex>
-      </v-card>
+  <v-container grid-list-md>
+    <v-layout  row wrap >
+      <v-flex xs12>
+
+        <v-card class="profile__header" >
+          <div class="profile__background" :style="'background-image: url('+avatarUrl+')'"></div>
+          <v-flex xs3 class="profile__avatar">
+            <v-avatar
+                    :size="250"
+                    color="grey lighten-4"
+            >
+              <v-img
+                      :src="avatarUrl"
+              ></v-img>
+            </v-avatar>
+          </v-flex>
+          <v-flex xs6 class="profile__card">
+            <v-card-text class="profile__name"><h1>{{artist.name}}</h1></v-card-text>
+            <v-card-text class="profile__email"><span>email: </span><a :href="'mailto:'+artist.email">{{artist.email}}</a></v-card-text>
+            <div class="profile__actions">
+              <v-btn v-if="!isAuthor && !artist.followed" depressed class="post-btn post-btn-follow" @click="follow">
+                + Подписаться
+              </v-btn>
+              <v-btn v-else-if="!isAuthor" depressed class="post-btn post-btn-followed" @click="follow">- Отписаться</v-btn>
+              <v-btn v-if="!isAuthor" depressed class="post-btn post-btn-likes" v-on:click="navigateTo('donate')">Отправить пожертвование </v-btn>
+            </div>
+          </v-flex>
+          <v-flex xs3 class="profile__stats">
+            <v-flex>
+              <img src="src/assets/img/follower.png"/>
+              <v-card-text>
+                Подписчиков:
+                <span class="">{{artist.followers}}</span>
+              </v-card-text>
+            </v-flex>
+            <v-flex>
+              <img src="src/assets/img/follower.png"/>
+              <v-card-text>
+                Подписок:
+                <span class="">{{artist.follows}}</span>
+              </v-card-text>
+            </v-flex>
+
+          </v-flex>
+        </v-card>
+
+      </v-flex>
+      <v-flex xs12>
+        <v-layout class="" row wrap>
+          <PreviewPost v-for="post in posts" :key="post.id" :post="post" />
+        </v-layout>
+      </v-flex>
     </v-layout>
-    <v-flex align-center row wrap>
-      <PreviewPost v-for="post in posts" :key="post.id" :post="post"></PreviewPost>
-    </v-flex>
+
+
   </v-container>
 </template>
 

@@ -106,3 +106,11 @@
 .v-card__text.pre-post__info-comments{
   color: #4ABDDB;
 }
+
+.pre-post__autor-name a {
+  color: #fff;
+  text-decoration: none;
+}
+.pre-post__autor-name {
+  padding-left: 20px !important;
+}
