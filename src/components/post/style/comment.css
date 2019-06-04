@@ -1,0 +1,16 @@
+.comment__text {
+  flex-direction: column;
+  padding-left: 20px;
+}
+.comment__text a {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.comment-holder {
+  padding: 10px;
+  background: #efefef;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 3px rgba(2, 2, 2, 0.31);
+}

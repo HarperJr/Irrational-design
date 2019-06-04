@@ -19,16 +19,16 @@
             </v-flex>
 
             <v-card-actions class="post-actions">
-              <v-btn v-if="!isAuthor && !isFollowed"  depressed class="post-btn post-btn-follow" @click="follow">+Подписаться</v-btn>
-              <v-btn v-else-if="!isAuthor" depressed class="post-btn post-btn-followed" @click="follow">-Отписаться</v-btn>
+              <v-btn v-if="!isAuthor && !isFollowed"  depressed class="post-btn post-btn-follow" @click="follow">+ Подписаться</v-btn>
+              <v-btn v-else-if="!isAuthor" depressed class="post-btn post-btn-followed" @click="follow">- Отписаться</v-btn>
 
               <!--div>кнопка должна быть активна, если пользователь уже подписался</div-->
               <!--v-btn depressed class="post-btn post-btn-followed" @click="follow">Followed</v-btn-->
               <!--div>эту кнопку пока опустим<div-->
               <!--v-btn depressed class="post-btn post-btn-likes" @click="bookmark">Bookmark</v-btn-->
-              <v-btn v-if="!isLiked" depressed class="post-btn post-btn-likes" @click="like">+Нравится</v-btn>
-              <v-btn v-else depressed class="post-btn post-btn-liked" @click="like">-Нравится</v-btn>
-              <v-card-text>{{post.likes}}</v-card-text>
+              <v-btn v-if="!isLiked" depressed class="post-btn post-btn-likes" @click="like">+ Нравится</v-btn>
+              <v-btn v-else depressed class="post-btn post-btn-liked" @click="like">- Нравится</v-btn>
+              <v-card-text class="post__likes-count"><img src="src/assets/img/heart.png" />{{post.likes}}</v-card-text>
 
             </v-card-actions>
             <br/>
@@ -37,19 +37,28 @@
             <p class="v-card-h v-card-tarea">{{post.description}}</p>
 
             <!--v-layout column-->
-            <v-card-text class="v-card-comment" v-for="comment in comments">
-              <Comment v-bind:comment="comment"></Comment>
-            </v-card-text>
+            <div class="comment__block">
+              <h3>Комментарии: </h3>
+              <div class="comment__block__comments">
+                <v-card-text class="v-card-comment" v-for="comment in comments.slice().reverse()">
+                  <Comment v-bind:comment="comment"></Comment>
+                </v-card-text>
+              </div>
+
+              <h3>Ваш комментарий: </h3>
+              <v-textarea class="v-card-h"
+                          v-model="comment"
+                          required
+                          label="Добавить комментарий"
+                          single-line
+
+                          solo></v-textarea>
+              <v-btn depressed class="post-btn post-btn-unblock" @click="submit">Отправить</v-btn>
+            </div>
+
             <!--/v-layout-->
           </v-layout>
-          <v-textarea class="v-card-h"
-                      v-model="comment"
-                      required
-                      label="Добавить комментарий"
-                      single-line
 
-                      solo></v-textarea>
-          <v-btn depressed class="post-btn post-btn-unblock" @click="submit">Отправить</v-btn>
 
           <v-card-actions class="post-actions">
             <v-btn v-if="isAuthor" depressed class="post-btn post-btn-delete" @click="remove">Удалить</v-btn>
@@ -118,7 +127,8 @@
             }
         ).then(res => {
           this.comments.push(res.data)
-        }).catch(ex => console.log(ex))
+        }).catch(ex => console.log(ex));
+        this.comment = '';
       },
       like() {
         http.post(`post/${this.post.id}/like`, null, {

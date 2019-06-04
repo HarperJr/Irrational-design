@@ -97,3 +97,27 @@
 .v-card-comment .child-flex>*, .flex{
   flex: initial;
 }
+
+.comment__block {
+  padding: 20px 0;
+  flex-direction: column;
+}
+.comment__block h3 {
+  margin-bottom: 20px;
+}
+.post__likes-count {
+  font-size: 16px;
+  font-weight: bold;
+  justify-content: flex-end;
+}
+.post__likes-count img {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+.comment__block__comments {
+  flex-direction: column;
+  height: 250px;
+  overflow: auto;
+  margin-bottom: 30px;
+}
