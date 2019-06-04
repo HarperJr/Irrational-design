@@ -38,9 +38,14 @@
                         single-line
 
                         solo></v-textarea>
-            <v-btn depressed class="post-btn post-btn-unblock" @click="submit">Отправить</v-btn>
-            <v-card-actions class="post-actions">
+            <!--v-layout column-->
+              <v-card-text v-for="comment in comments"><Comment v-bind:comment="comment"></Comment></v-card-text>
+            <!--/v-layout-->
+          </v-layout>
 
+          <v-btn depressed class="post-btn post-btn-unblock" @click="submit">Отправить</v-btn>
+
+            <v-card-actions class="post-actions">
               <v-btn v-if="isAuthor" depressed class="post-btn post-btn-delete" @click="remove">Удалить</v-btn>
               <!--v-btn v-else depressed class="post-btn post-btn-report" @click="report">Пожаловаться</v-btn-->
               <!--v-btn v-else depressed class="post-btn post-btn-report" @click="report">Вы пожаловались</v-btn-->
@@ -50,10 +55,6 @@
               <v-btn depressed class="post-btn post-btn-unblock" @click="unblock">Разблокировать</v-btn>
             </v-card-actions-->
 
-            <v-layout column>
-              <Comment v-for="comment in comments" :key="comment.id" :comment="comment"></Comment>
-            </v-layout>
-          </v-layout>
 
         </v-card>
       </v-flex>
@@ -78,10 +79,7 @@
       return {
         comment: '',
         post: null,
-        comments: {
-          type: Object,
-          required: true
-        }
+        comments: []
       }
     },
     computed: {
@@ -99,11 +97,11 @@
     },
     methods: {
       submit() {
-        http.post(`post/comment`, {
-              postId: this.post.id,
+        http.post(`post/${this.post.id}/comment`, {
               content: this.comment
             }
         ).then(res => {
+          this.comments.push(res.data)
         }).catch(ex => console.log(ex))
       }
     },
@@ -111,6 +109,11 @@
       http.get(`post/${this.$route.params.id}`)
           .then(res => {
             this.post = res.data
+          })
+          .catch(ex => console.log(ex))
+      http.get(`post/${this.$route.params.id}/comments`)
+          .then(res => {
+            this.comments = res.data
           })
           .catch(ex => console.log(ex))
     }

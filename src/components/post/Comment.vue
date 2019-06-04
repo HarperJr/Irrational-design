@@ -2,7 +2,7 @@
   <v-container class="comment-holder">
     <v-flex>
       <v-avatar size="56px">
-          <img :src="comment.author.avatar.link" class="avatar">
+          <img :src="avatarUrl" class="avatar">
       </v-avatar>
       <p class="comment-title">{{comment.author.name}}</p>
     </v-flex>
@@ -17,13 +17,16 @@
   export default {
     name: 'Comment',
     props: {
-      comment: {
-        author: {
-          name: String,
-          required: true
-        },
-        content: String,
-        required: true
+      comment: null
+    },
+    computed: {
+      avatarUrl() {
+        if (this.comment) {
+          let avatar = this.comment.author.avatar
+          if (avatar) {
+            return `${API_BASE_URL}avatars/${avatar.link}`
+          } else return ''
+        }
       }
     }
   }

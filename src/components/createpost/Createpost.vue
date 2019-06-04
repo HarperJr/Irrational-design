@@ -150,7 +150,7 @@
                               buttonClass="ui button primary"
                               :customStrings="{
                               upload: '<h1>Upload it!</h1>',
-                              drag: 'Drag and drop your image here'}">
+                              drag: 'Перетащите картинку в эту область'}">
 
                       </VPictureInput>
                     </v-flex>
@@ -183,6 +183,7 @@
   export default {
     data () {
       return {
+        categories: [],
         isEditing: true,
         model: null,
         errors: [],
@@ -228,11 +229,6 @@
         y: 0
       }
     },
-    computed: {
-      categories: function() {
-        return this.$store.getters.categories
-      }
-    },
     components: {
       VPictureInput,
     },
@@ -260,6 +256,8 @@
     created() {
       this.$store.dispatch('get_categories', this.categories);
       console.log(this.$store.getters.categories);
+      http.get('/categories')
+          .then(res => this.categories = res.data)
     },
     methods: {
     edit (index, item) {
