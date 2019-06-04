@@ -25,7 +25,8 @@
               <!--v-btn depressed class="post-btn post-btn-followed" @click="follow">Followed</v-btn-->
               <!--div>эту кнопку пока опустим<div-->
               <!--v-btn depressed class="post-btn post-btn-likes" @click="bookmark">Bookmark</v-btn-->
-              <v-btn depressed class="post-btn post-btn-likes" @click="like">Like</v-btn>
+              <v-btn v-if="!isLiked" depressed class="post-btn post-btn-likes" @click="like">Like</v-btn>
+              <v-btn v-else depressed class="post-btn post-btn-liked" @click="like">Liked</v-btn>
               <v-card-text>123</v-card-text>
             </v-card-actions>
 

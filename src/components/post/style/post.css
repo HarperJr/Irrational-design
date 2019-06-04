@@ -88,3 +88,8 @@
   color: #4B4646 !important;
   background-color: #D8D8D8 !important;
 }
+
+.post-btn.post-btn-liked.v-btn{
+  background-color: #8ad8c8 !important;
+  color: #ffffff !important;
+}
