@@ -42,13 +42,13 @@
       </v-card-actions>
       <hr style="margin-bottom: 5px;" color="#D7D7D7"/>
       <v-card-actions>
-        <v-btn depressed class="pre-post-btn-like">Нравится</v-btn>
+        <v-btn depressed class="pre-post-btn-like">+Нравится</v-btn>
         <v-btn depressed class="pre-post-btn-follow">+Подписаться</v-btn>
       </v-card-actions>
       <v-card-actions class="pre-post__bottom-info">
-        <v-card-text class="pre-post__info-likes">{{post.likes}} нравится</v-card-text>
+        <v-card-text class="pre-post__info-likes">нравится: {{post.likes}}</v-card-text>
         <!--v-card-text>{{post.follows}} просмотры</v-card-text-->
-        <v-card-text class="pre-post__info-comments">{{post.comments}} комментарии</v-card-text>
+        <v-card-text class="pre-post__info-comments">комментариев: {{post.comments}}</v-card-text>
       </v-card-actions>
     </v-card>
 

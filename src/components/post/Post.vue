@@ -20,16 +20,15 @@
 
             <v-card-actions class="post-actions">
               <v-btn v-if="!isAuthor && !isFollowed"  depressed class="post-btn post-btn-follow" @click="follow">+Подписаться</v-btn>
-              <v-btn v-else depressed class="post-btn post-btn-followed" @click="follow">-Отписаться</v-btn>
+              <v-btn v-else-if="!isAuthor" depressed class="post-btn post-btn-followed" @click="follow">-Отписаться</v-btn>
 
-              <v-card-text v-if="!isAuthor">{{follows}}</v-card-text>
               <!--div>кнопка должна быть активна, если пользователь уже подписался</div-->
               <!--v-btn depressed class="post-btn post-btn-followed" @click="follow">Followed</v-btn-->
               <!--div>эту кнопку пока опустим<div-->
               <!--v-btn depressed class="post-btn post-btn-likes" @click="bookmark">Bookmark</v-btn-->
-              <v-btn v-if="!isLiked" depressed class="post-btn post-btn-likes" @click="like">Like</v-btn>
-              <v-btn v-else depressed class="post-btn post-btn-liked" @click="like">Liked</v-btn>
-              <v-card-text>{{likes}}</v-card-text>
+              <v-btn v-if="!isLiked" depressed class="post-btn post-btn-likes" @click="like">+Нравится</v-btn>
+              <v-btn v-else depressed class="post-btn post-btn-liked" @click="like">-Нравится</v-btn>
+              <v-card-text>{{post.likes}}</v-card-text>
 
             </v-card-actions>
             <br/>
@@ -89,7 +88,6 @@
         comments: [],
         isLiked: false,
         isFollowed: false,
-        likes: 0,
         follows: 0
       }
     },
@@ -140,18 +138,12 @@
     watch: {
       isLiked(value) {
         if (value) {
-          this.likes = this.likes + 1
+          this.post.likes = this.post.likes + 1
         } else {
-          this.likes = this.likes - 1
+          this.post.likes = this.post.likes - 1
         }
       },
-      isFollowed(value) {
-        if (value) {
-          this.follows = this.follows + 1
-        } else {
-          this.follows = this.follows - 1
-        }
-      }
+
     },
     mounted() {
       http.get(`post/${this.$route.params.id}`)
