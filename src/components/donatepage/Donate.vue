@@ -95,18 +95,14 @@
       submit() {
         http.post('payment/request-payment', {amount: this.amount, to: this.artist.id})
             .then(res => {
-              if (res.data.status === 'succsess') {
+              if (res.data.status === 'success') {
                 this.$router.push('donate-submit', res.data.payment_id)
               } else {
                 this.$router.push('/')
               }
-            }
-        this.$store.dispatch('register', {
-          credentials: this.regCredentials,
-          avatar: this.avatar
+            })
         }
       }
-    }
   }
 </script>
 
