@@ -19,7 +19,7 @@
             </v-flex>
 
             <v-card-actions class="post-actions">
-              <v-btn depressed class="post-btn post-btn-follow" @click="follow">+Подписаться</v-btn>
+              <v-btn  v-if="!isAuthor" depressed class="post-btn post-btn-follow" @click="follow">+Подписаться</v-btn>
               <!--div>кнопка должна быть активна, если пользователь уже подписался</div-->
               <!--v-btn depressed class="post-btn post-btn-followed" @click="follow">Followed</v-btn-->
               <!--div>эту кнопку пока опустим<div-->
