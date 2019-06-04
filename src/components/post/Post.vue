@@ -153,7 +153,18 @@
           this.post.likes = this.post.likes - 1
         }
       },
-
+      post(value) {
+        http.get(`post/${value.id}/liked`)
+            .then(res => {
+              this.isLiked = res.data.liked
+            })
+            .catch(ex => console.log(ex))
+        http.get(`artist/${value.artist.id}/followed`)
+            .then(res => {
+              this.isFollowed = res.data.followed
+            })
+            .catch(ex => console.log(ex))
+      }
     },
     mounted() {
       http.get(`post/${this.$route.params.id}`)
@@ -164,16 +175,6 @@
       http.get(`post/${this.$route.params.id}/comments`)
           .then(res => {
             this.comments = res.data
-          })
-          .catch(ex => console.log(ex))
-      http.get(`post/${this.$route.params.id}/liked`)
-          .then(res => {
-            this.isLiked = res.data.liked
-          })
-          .catch(ex => console.log(ex))
-      http.get(`artist/${this.$route.params.id}/followed`)
-          .then(res => {
-            this.isFollowed = res.data.followed
           })
           .catch(ex => console.log(ex))
     }
