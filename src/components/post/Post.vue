@@ -27,7 +27,7 @@
               <!--v-btn depressed class="post-btn post-btn-likes" @click="bookmark">Bookmark</v-btn-->
               <v-btn v-if="!isLiked" depressed class="post-btn post-btn-likes" @click="like">Like</v-btn>
               <v-btn v-else depressed class="post-btn post-btn-liked" @click="like">Liked</v-btn>
-              <v-card-text>123</v-card-text>
+              <v-card-text>{{likes}}</v-card-text>
             </v-card-actions>
 
             <h1 class="v-card-h">{{post.title}}</h1>
@@ -84,7 +84,8 @@
         comment: '',
         post: null,
         comments: [],
-        isLiked: false
+        isLiked: false,
+        likes: 0
       }
     },
     computed: {
@@ -122,6 +123,15 @@
             initial: !this.isLiked
           }
         }).then(res => this.isLiked = res.data.liked)
+      }
+    },
+    watch: {
+      isLiked(value) {
+        if (value) {
+          this.likes = this.likes + 1
+        } else {
+          this.likes = this.likes - 1
+        }
       }
     },
     mounted() {
