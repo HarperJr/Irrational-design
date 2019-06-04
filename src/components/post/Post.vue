@@ -19,8 +19,10 @@
             </v-flex>
 
             <v-card-actions class="post-actions">
-              <v-btn v-if="!isAuthor" depressed class="post-btn post-btn-follow" @click="follow">+Подписаться</v-btn>
-              <v-card-text v-if="!isAuthor">123</v-card-text>
+              <v-btn v-if="!isAuthor && !isFollowed"  depressed class="post-btn post-btn-follow" @click="follow">+Подписаться</v-btn>
+              <v-btn v-else depressed class="post-btn post-btn-followed" @click="follow">-Отписаться</v-btn>
+
+              <v-card-text v-if="!isAuthor">{{follows}}</v-card-text>
               <!--div>кнопка должна быть активна, если пользователь уже подписался</div-->
               <!--v-btn depressed class="post-btn post-btn-followed" @click="follow">Followed</v-btn-->
               <!--div>эту кнопку пока опустим<div-->
@@ -28,8 +30,9 @@
               <v-btn v-if="!isLiked" depressed class="post-btn post-btn-likes" @click="like">Like</v-btn>
               <v-btn v-else depressed class="post-btn post-btn-liked" @click="like">Liked</v-btn>
               <v-card-text>{{likes}}</v-card-text>
-            </v-card-actions>
 
+            </v-card-actions>
+            <br/>
             <h1 class="v-card-h">{{post.title}}</h1>
             <h2 class="v-card-h">{{post.subtitle}}</h2>
             <p class="v-card-h v-card-tarea">{{post.description}}</p>
@@ -85,7 +88,9 @@
         post: null,
         comments: [],
         isLiked: false,
-        likes: 0
+        isFollowed: false,
+        likes: 0,
+        follows: 0
       }
     },
     computed: {
@@ -123,6 +128,13 @@
             initial: !this.isLiked
           }
         }).then(res => this.isLiked = res.data.liked)
+      },
+      follow() {
+        http.post(`artist/${this.post.artist.id}/follow`, null, {
+          params: {
+            initial: !this.isFollowed
+          }
+        }).then(res => this.isFollowed = res.data.followed)
       }
     },
     watch: {
@@ -131,6 +143,13 @@
           this.likes = this.likes + 1
         } else {
           this.likes = this.likes - 1
+        }
+      },
+      isFollowed(value) {
+        if (value) {
+          this.follows = this.follows + 1
+        } else {
+          this.follows = this.follows - 1
         }
       }
     },
@@ -148,6 +167,11 @@
       http.get(`post/${this.$route.params.id}/liked`)
           .then(res => {
             this.isLiked = res.data.liked
+          })
+          .catch(ex => console.log(ex))
+      http.get(`artist/${this.$route.params.id}/followed`)
+          .then(res => {
+            this.isFollowed = res.data.followed
           })
           .catch(ex => console.log(ex))
     }

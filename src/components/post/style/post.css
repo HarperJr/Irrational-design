@@ -93,3 +93,7 @@
   background-color: #92d8c5 !important;
   color: #ffffff !important;
 }
+
+.v-card-comment .child-flex>*, .flex{
+  flex: initial;
+}

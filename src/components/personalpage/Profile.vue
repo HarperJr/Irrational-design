@@ -19,11 +19,14 @@
       </v-flex>
         </v-card>
     </v-layout>
+    <v-flex align-center row wrap>
+      <PreviewPost v-for="post in posts" :key="post.id" :post="post"></PreviewPost>
+    </v-flex>
   </v-container>
 </template>
 
 <script>
-
+  import PreviewPost from "../mainpage/PreviewPost"
   const axios = require('axios');
 
   export default {
@@ -34,6 +37,7 @@
           type: Object,
           required: true
         },
+        posts: []
       }
     },
     created() {
@@ -41,6 +45,8 @@
       this.$store.dispatch('get_artist', {
         artistId: this.$route.params.id
       })
+      http.get(`posts/${this.$route.params.id}`)
+          .then(res => this.posts = res.data)
     },
     computed: {
       artist: function() {
@@ -51,8 +57,12 @@
           return `${API_BASE_URL}/avatars/${this.artist.avatar.link}`
         }
         else {return null}
-      }
+      },
+
     },
+    components: {
+      PreviewPost
+    }
     //created() {
       // axios.get('http://localhost:8080/api/user.json', { headers: {'Access-Control-Allow-Origin': '*'} })
       //     .then(response => {
