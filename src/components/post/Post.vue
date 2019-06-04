@@ -3,7 +3,6 @@
     <v-layout align-start>
       <v-flex xs12 md5 class="post-card">
         <v-card class="v-post-card">
-
           <v-layout column class="post-card-text">
             <v-flex>
               <v-flex>
@@ -90,8 +89,15 @@
             return `${API_BASE_URL}avatars/${avatar.link}`
           } else return ''
         }
+      },
+      isAuthor() {
+        if (this.post) {
+          let credentials = this.$store.getters.credentials
+          return credentials.id === this.post.artist.id
+        } else return false
       }
     },
+
     components: {
       Comment, Art
     },
