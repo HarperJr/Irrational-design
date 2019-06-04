@@ -19,40 +19,44 @@
             </v-flex>
 
             <v-card-actions class="post-actions">
-              <v-btn  v-if="!isAuthor" depressed class="post-btn post-btn-follow" @click="follow">+Подписаться</v-btn>
+              <v-btn v-if="!isAuthor" depressed class="post-btn post-btn-follow" @click="follow">+Подписаться</v-btn>
+              <v-card-text v-if="!isAuthor">123</v-card-text>
               <!--div>кнопка должна быть активна, если пользователь уже подписался</div-->
               <!--v-btn depressed class="post-btn post-btn-followed" @click="follow">Followed</v-btn-->
               <!--div>эту кнопку пока опустим<div-->
               <!--v-btn depressed class="post-btn post-btn-likes" @click="bookmark">Bookmark</v-btn-->
               <v-btn depressed class="post-btn post-btn-likes" @click="like">Like</v-btn>
+              <v-card-text>123</v-card-text>
             </v-card-actions>
 
             <h1 class="v-card-h">{{post.title}}</h1>
             <h2 class="v-card-h">{{post.subtitle}}</h2>
             <p class="v-card-h v-card-tarea">{{post.description}}</p>
-            <v-textarea class="v-card-h"
-                        v-model="comment"
-                        required
-                        label="Добавить комментарий"
-                        single-line
 
-                        solo></v-textarea>
             <!--v-layout column-->
-              <v-card-text v-for="comment in comments"><Comment v-bind:comment="comment"></Comment></v-card-text>
+            <v-card-text class="v-card-comment" v-for="comment in comments">
+              <Comment v-bind:comment="comment"></Comment>
+            </v-card-text>
             <!--/v-layout-->
           </v-layout>
+          <v-textarea class="v-card-h"
+                      v-model="comment"
+                      required
+                      label="Добавить комментарий"
+                      single-line
 
+                      solo></v-textarea>
           <v-btn depressed class="post-btn post-btn-unblock" @click="submit">Отправить</v-btn>
 
-            <v-card-actions class="post-actions">
-              <v-btn v-if="isAuthor" depressed class="post-btn post-btn-delete" @click="remove">Удалить</v-btn>
-              <!--v-btn v-else depressed class="post-btn post-btn-report" @click="report">Пожаловаться</v-btn-->
-              <!--v-btn v-else depressed class="post-btn post-btn-report" @click="report">Вы пожаловались</v-btn-->
-            </v-card-actions>
-            <!--v-card-actions class="post-actions">
-              <v-btn depressed class="post-btn post-btn-block" @click="block">Блокировать</v-btn>
-              <v-btn depressed class="post-btn post-btn-unblock" @click="unblock">Разблокировать</v-btn>
-            </v-card-actions-->
+          <v-card-actions class="post-actions">
+            <v-btn v-if="isAuthor" depressed class="post-btn post-btn-delete" @click="remove">Удалить</v-btn>
+            <!--v-btn v-else depressed class="post-btn post-btn-report" @click="report">Пожаловаться</v-btn-->
+            <!--v-btn v-else depressed class="post-btn post-btn-report" @click="report">Вы пожаловались</v-btn-->
+          </v-card-actions>
+          <!--v-card-actions class="post-actions">
+            <v-btn depressed class="post-btn post-btn-block" @click="block">Блокировать</v-btn>
+            <v-btn depressed class="post-btn post-btn-unblock" @click="unblock">Разблокировать</v-btn>
+          </v-card-actions-->
 
 
         </v-card>
@@ -78,7 +82,8 @@
       return {
         comment: '',
         post: null,
-        comments: []
+        comments: [],
+        isLiked: false
       }
     },
     computed: {
@@ -109,6 +114,13 @@
         ).then(res => {
           this.comments.push(res.data)
         }).catch(ex => console.log(ex))
+      },
+      like() {
+        http.post(`post/${this.post.id}/like`, null, {
+          params: {
+            initial: !this.isLiked
+          }
+        }).then(res => this.isLiked = res.data.liked)
       }
     },
     mounted() {
@@ -120,6 +132,11 @@
       http.get(`post/${this.$route.params.id}/comments`)
           .then(res => {
             this.comments = res.data
+          })
+          .catch(ex => console.log(ex))
+      http.get(`post/${this.$route.params.id}/liked`)
+          .then(res => {
+            this.isLiked = res.data.liked
           })
           .catch(ex => console.log(ex))
     }
