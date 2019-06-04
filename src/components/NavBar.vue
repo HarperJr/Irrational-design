@@ -16,14 +16,17 @@
             {{credentials.name}}
           </v-btn>
           <div class="nickname__dropdown">
-            <v-btn flat class="btn-settings">
-              Account
+            <v-btn flat class="btn-settings" v-on:click="navigateTo('createpost')">
+              Новый пост
+            </v-btn>
+            <v-btn flat class="btn-settings" v-on:click="navigateTo('profile', credentials.id)">
+              Аккаунт
             </v-btn>
             <v-btn flat class="btn-settings">
-              Settings
+              Настройки
             </v-btn>
             <v-btn flat class="btn-settings" @click="logout()">
-              Log Out
+              Выйти
             </v-btn>
           </div>
         </div>
@@ -69,7 +72,8 @@
       },
       logout() {
         this.$store.dispatch('logout')
-      }
+      },
+
     },
     mounted() {
       this.$store.dispatch('get_credentials')

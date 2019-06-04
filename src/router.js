@@ -7,6 +7,7 @@ import Profile from './components/personalpage/Profile.vue'
 import Auth from './components/authpage/Auth.vue'
 import Reg from './components/regpage/Reg.vue'
 import Createpost from './components/createpost/Createpost.vue'
+import Donate from './components/donatepage/Donate.vue'
 
 Vue.use(Router)
 export default new Router({
@@ -35,6 +36,10 @@ export default new Router({
     path: '/createpost',
     name: 'createpost',
     component: Createpost
+    },{
+      path: '/donate/:id',
+      name: 'donate',
+      component: Donate
     }
   ]
 })

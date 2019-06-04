@@ -3,25 +3,29 @@
   <v-container>
     <v-layout class="profile__raspolozheniye">
       <v-card style="padding: 50px;">
-      <v-flex class="profile__avatar">
-        <v-avatar
-                :size="250"
-                color="grey lighten-4"
-        >
-          <v-img
-                  :src="avatarUrl"
-          ></v-img>
-        </v-avatar>
-      </v-flex>
-      <v-flex class="profile__raspolozheniye">
-        <v-card-text>Nickname: {{artist.name}}</v-card-text>
-        <v-card-text>email: {{artist.email}}</v-card-text>
-        <v-btn v-if="!isAuthor && !artist.followed"  depressed class="post-btn post-btn-follow" @click="follow">+Подписаться</v-btn>
-        <v-btn v-else-if="!isAuthor" depressed class="post-btn post-btn-followed" @click="follow">-Отписаться</v-btn>
-        <v-card-text>Подписчиков: {{artist.followers}}</v-card-text>
-        <v-card-text>Подписок: {{artist.follows}}</v-card-text>
-      </v-flex>
-        </v-card>
+        <v-flex class="profile__avatar">
+          <v-avatar
+                  :size="250"
+                  color="grey lighten-4"
+          >
+            <v-img
+                    :src="avatarUrl"
+            ></v-img>
+          </v-avatar>
+        </v-flex>
+        <v-flex class="profile__raspolozheniye">
+          <v-card-text>Nickname: {{artist.name}}</v-card-text>
+          <v-card-text>email: {{artist.email}}</v-card-text>
+          <v-btn v-if="!isAuthor && !artist.followed" depressed class="post-btn post-btn-follow" @click="follow">
+            +Подписаться
+          </v-btn>
+          <v-btn v-else-if="!isAuthor" depressed class="post-btn post-btn-followed" @click="follow">-Отписаться</v-btn>
+          <v-btn v-if="!isAuthor" depressed class="post-btn post-btn-likes" v-on:click="navigateTo('donate')">Отправить пожертвование </v-btn>
+          <v-card-text>Подписчиков: {{artist.followers}}</v-card-text>
+          <v-card-text>Подписок: {{artist.follows}}</v-card-text>
+          <v-card-text v-if="isAuthor">{{"55 556"}}</v-card-text>
+        </v-flex>
+      </v-card>
     </v-layout>
     <v-flex align-center row wrap>
       <PreviewPost v-for="post in posts" :key="post.id" :post="post"></PreviewPost>
@@ -31,6 +35,7 @@
 
 <script>
   import PreviewPost from "../mainpage/PreviewPost"
+
   const axios = require('axios');
 
   export default {
@@ -67,18 +72,22 @@
             this.artist.followers = this.artist.followers - 1
           }
         })
+      },
+      navigateTo(where, id, item) {
+        this.$router.push({name: where, params: {id}, query: item});
       }
     },
 
     computed: {
-      artist: function() {
+      artist: function () {
         return this.$store.getters.artist;
       },
       avatarUrl() {
         if (this.artist) {
           return `${API_BASE_URL}/avatars/${this.artist.avatar.link}`
+        } else {
+          return null
         }
-        else {return null}
       },
       isAuthor() {
         if (this.artist) {
@@ -94,12 +103,12 @@
       PreviewPost
     }
     //created() {
-      // axios.get('http://localhost:8080/api/user.json', { headers: {'Access-Control-Allow-Origin': '*'} })
-      //     .then(response => {
-      //       this.user = response.data;
-      //       console.log(this.user);
-      //     })
-      //     .catch(e => console.log(e))
+    // axios.get('http://localhost:8080/api/user.json', { headers: {'Access-Control-Allow-Origin': '*'} })
+    //     .then(response => {
+    //       this.user = response.data;
+    //       console.log(this.user);
+    //     })
+    //     .catch(e => console.log(e))
     //}
   }
 
