@@ -163,11 +163,13 @@
                 })
           })
           .catch(ex => console.log(ex))
+
       http.get(`post/${postId}/comments`)
           .then(res => {
             this.comments = res.data
           })
           .catch(ex => console.log(ex))
+
       http.get(`post/${postId}/liked`)
           .then(res => this.isLiked = res.data.liked)
     }
