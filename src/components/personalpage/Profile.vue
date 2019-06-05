@@ -1,10 +1,10 @@
 <template>
 
   <v-container grid-list-md>
-    <v-layout  row wrap >
+    <v-layout row wrap>
       <v-flex xs12>
 
-        <v-card class="profile__header" >
+        <v-card class="profile__header">
           <div class="profile__background" :style="'background-image: url('+avatarUrl+')'"></div>
           <v-flex xs3 class="profile__avatar">
             <v-avatar
@@ -18,13 +18,17 @@
           </v-flex>
           <v-flex xs6 class="profile__card">
             <v-card-text class="profile__name"><h1>{{artist.name}}</h1></v-card-text>
-            <v-card-text class="profile__email"><span>email: </span><a :href="'mailto:'+artist.email">{{artist.email}}</a></v-card-text>
+            <v-card-text class="profile__email"><span>email: </span><a
+                    :href="'mailto:'+artist.email">{{artist.email}}</a></v-card-text>
             <div class="profile__actions">
-              <v-btn v-if="!isAuthor && !artist.followed" depressed class="post-btn post-btn-follow" @click="follow">
+              <v-btn v-if="!isAuthor && !isFollowed" depressed class="post-btn post-btn-follow" @click="follow">
                 + Подписаться
               </v-btn>
-              <v-btn v-else-if="!isAuthor" depressed class="post-btn post-btn-followed" @click="follow">- Отписаться</v-btn>
-              <v-btn v-if="!isAuthor" depressed class="post-btn post-btn-likes" v-on:click="navigateTo('donate')">Отправить пожертвование </v-btn>
+              <v-btn v-else-if="!isAuthor" depressed class="post-btn post-btn-followed" @click="follow">- Отписаться
+              </v-btn>
+              <v-btn v-if="!isAuthor" depressed class="post-btn post-btn-likes" v-on:click="navigateTo('donate')">
+                Отправить пожертвование
+              </v-btn>
             </div>
           </v-flex>
           <v-flex xs3 class="profile__stats">
@@ -49,7 +53,7 @@
       </v-flex>
       <v-flex xs12>
         <v-layout class="" row wrap>
-          <PreviewPost v-for="post in posts" :key="post.id" :post="post" />
+          <PreviewPost v-for="post in posts" :key="post.id" :post="post"/>
         </v-layout>
       </v-flex>
     </v-layout>
@@ -61,28 +65,15 @@
 <script>
   import PreviewPost from "../mainpage/PreviewPost"
 
-  const axios = require('axios');
-
   export default {
     name: "Profile",
     data() {
       return {
-        user: {
-          type: Object,
-          required: true
-        },
-        posts: []
+        artist: null,
+        posts: [],
+        isFollowed: false
       }
     },
-    created() {
-      console.log(this.$route.params.id);
-      this.$store.dispatch('get_artist', {
-        artistId: this.$route.params.id
-      })
-      http.get(`posts/${this.$route.params.id}`)
-          .then(res => this.posts = res.data)
-    },
-
     methods: {
       follow() {
         http.post(`artist/${this.artist.id}/follow`, null, {
@@ -90,29 +81,20 @@
             initial: !this.artist.followed
           }
         }).then(res => {
-          this.artist.followed = res.data.followed
-          if (this.artist.followed) {
-            this.artist.followers = this.artist.followers + 1
-          } else {
-            this.artist.followers = this.artist.followers - 1
-          }
+          let followed = res.data.followed
+          this.isFollowed = followed
+          this.artist.followers += followed ? 1 : -1
         })
       },
       navigateTo(where, id, item) {
         this.$router.push({name: where, params: {id}, query: item});
       }
     },
-
     computed: {
-      artist: function () {
-        return this.$store.getters.artist;
-      },
       avatarUrl() {
         if (this.artist) {
           return `${API_BASE_URL}/avatars/${this.artist.avatar.link}`
-        } else {
-          return null
-        }
+        } else return ''
       },
       isAuthor() {
         if (this.artist) {
@@ -122,7 +104,17 @@
       }
     },
     mounted() {
-
+      http.get(`/artist/${this.$route.params.id}`)
+          .then(res => {
+            this.artist = res.data
+            http.get(`artist/${this.artist.id}/followed`)
+                .then(res => {
+                  this.isFollowed = res.data.followed
+                })
+          })
+          .catch(ex => console.log(ex))
+      http.get(`posts/${this.$route.params.id}`)
+          .then(res => this.posts = res.data)
     },
     components: {
       PreviewPost

@@ -19,8 +19,11 @@
             </v-flex>
 
             <v-card-actions class="post-actions">
-              <v-btn v-if="!isAuthor && !isFollowed"  depressed class="post-btn post-btn-follow" @click="follow">+ Подписаться</v-btn>
-              <v-btn v-else-if="!isAuthor" depressed class="post-btn post-btn-followed" @click="follow">- Отписаться</v-btn>
+              <v-btn v-if="!isAuthor && !isFollowed" depressed class="post-btn post-btn-follow" @click="follow">+
+                Подписаться
+              </v-btn>
+              <v-btn v-else-if="!isAuthor" depressed class="post-btn post-btn-followed" @click="follow">- Отписаться
+              </v-btn>
 
               <!--div>кнопка должна быть активна, если пользователь уже подписался</div-->
               <!--v-btn depressed class="post-btn post-btn-followed" @click="follow">Followed</v-btn-->
@@ -28,7 +31,7 @@
               <!--v-btn depressed class="post-btn post-btn-likes" @click="bookmark">Bookmark</v-btn-->
               <v-btn v-if="!isLiked" depressed class="post-btn post-btn-likes" @click="like">+ Нравится</v-btn>
               <v-btn v-else depressed class="post-btn post-btn-liked" @click="like">- Нравится</v-btn>
-              <v-card-text class="post__likes-count"><img src="src/assets/img/heart.png" />{{post.likes}}</v-card-text>
+              <v-card-text class="post__likes-count"><img src="src/assets/img/heart.png"/>{{post.likes}}</v-card-text>
 
             </v-card-actions>
             <br/>
@@ -135,7 +138,11 @@
           params: {
             initial: !this.isLiked
           }
-        }).then(res => this.isLiked = res.data.liked)
+        }).then(res => {
+          let liked = res.data.liked
+          this.isLiked = liked
+          this.post.likes += liked ? 1 : -1
+        })
       },
       follow() {
         http.post(`artist/${this.post.artist.id}/follow`, null, {
@@ -145,38 +152,24 @@
         }).then(res => this.isFollowed = res.data.followed)
       }
     },
-    watch: {
-      isLiked(value) {
-        if (value) {
-          this.post.likes = this.post.likes + 1
-        } else {
-          this.post.likes = this.post.likes - 1
-        }
-      },
-      post(value) {
-        http.get(`post/${value.id}/liked`)
-            .then(res => {
-              this.isLiked = res.data.liked
-            })
-            .catch(ex => console.log(ex))
-        http.get(`artist/${value.artist.id}/followed`)
-            .then(res => {
-              this.isFollowed = res.data.followed
-            })
-            .catch(ex => console.log(ex))
-      }
-    },
     mounted() {
-      http.get(`post/${this.$route.params.id}`)
+      let postId = this.$route.params.id
+      http.get(`post/${postId}`)
           .then(res => {
             this.post = res.data
+            http.get(`artist/${this.post.artist.id}/followed`)
+                .then(res => {
+                  this.isFollowed = res.data.followed
+                })
           })
           .catch(ex => console.log(ex))
-      http.get(`post/${this.$route.params.id}/comments`)
+      http.get(`post/${postId}/comments`)
           .then(res => {
             this.comments = res.data
           })
           .catch(ex => console.log(ex))
+      http.get(`post/${postId}/liked`)
+          .then(res => this.isLiked = res.data.liked)
     }
   }
 </script>

@@ -80,7 +80,7 @@ module.exports = {
       http: path.resolve(path.join(__dirname, 'src/http-client'))
     }),
     new webpack.DefinePlugin({
-      API_BASE_URL: '"http://localhost:8081/"',
+      API_BASE_URL: '"http://134.209.84.128/"',
       "typeof window": JSON.stringify("object"),
       'process.env': {
         NODE_ENV: '"developement"'
