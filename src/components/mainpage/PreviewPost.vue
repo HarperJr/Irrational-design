@@ -42,8 +42,10 @@
       </v-card-actions>
       <hr style="margin-bottom: 5px;" color="#D7D7D7"/>
       <v-card-actions>
-        <v-btn depressed class="pre-post-btn-like">+ Нравится</v-btn>
-        <v-btn depressed class="pre-post-btn-follow">+ Подписаться</v-btn>
+        <v-btn v-if="!isLiked" depressed @click="like" class="pre-post-btn-like">+ Нравится</v-btn>
+        <v-btn v-else depressed @click="like" class="pre-post-btn-like">- Нравится</v-btn>
+        <v-btn v-if="!isAuthor && !isFollowed" @click="follow" depressed class="pre-post-btn-follow">+ Подписаться</v-btn>
+        <v-btn v-else-if="!isAuthor" depressed @click="follow" class="pre-post-btn-follow">- Отписаться</v-btn>
       </v-card-actions>
       <v-card-actions class="pre-post__bottom-info">
         <v-card-text class="pre-post__info-likes">нравится: {{post.likes}}</v-card-text>
@@ -62,7 +64,9 @@
     props: {
       post: {
         required: true
-      }
+      },
+      isFollowed: false,
+      isLiked: false
     },
     computed: {
       previewUrl: function () {
@@ -73,13 +77,42 @@
           return `${API_BASE_URL}avatars/${this.post.artist.avatar.link}`
         }
         else {return null}
+      },
+      isAuthor() {
+        let credentials = this.$store.getters.credentials
+        return this.post.artist.id === credentials.id
       }
     },
     methods: {
       navigateTo(where, id, item){
         this.$router.push({name: where, params: {id}, query: item});
+      },
+      like() {
+        http.post(`post/${this.post.id}/like`, null, {
+          params: {
+            initial: !this.isLiked
+          }
+        }).then(res => {
+          let liked = res.data.liked
+          this.isLiked = liked
+          this.post.likes += liked ? 1 : -1
+        })
+      },
+      follow() {
+        http.post(`artist/${this.post.artist.id}/follow`, null, {
+          params: {
+            initial: !this.isFollowed
+          }
+        }).then(res => this.isFollowed = res.data.followed)
       }
-
+    },
+    mounted() {
+      http.get(`artist/${this.post.artist.id}/followed`)
+          .then(res => {
+            this.isFollowed = res.data.followed
+          })
+      http.get(`post/${this.post.id}/liked`)
+          .then(res => this.isLiked = res.data.liked)
     }
   }
 </script>
